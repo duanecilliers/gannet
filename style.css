@@ -280,6 +280,9 @@ big {
   clear: both;
   width: 100%; }
 
+.site-header, .site-content, .site-footer {
+  padding: 0 2em; }
+
 /*--------------------------------------------------------------
 4.0 Elements
 --------------------------------------------------------------*/
@@ -401,7 +404,7 @@ textarea {
 5.1 Links
 --------------------------------------------------------------*/
 a {
-  color: royalblue; }
+  color: white; }
   a:visited {
     color: purple; }
   a:hover, a:focus, a:active {
@@ -410,6 +413,9 @@ a {
     outline: thin dotted; }
   a:hover, a:active {
     outline: 0; }
+
+.hentry a {
+  color: #d64760; }
 
 /*--------------------------------------------------------------
 5.2 Menus
@@ -553,7 +559,10 @@ a {
 
 .hentry {
   margin: 0 0 1.5em;
+  padding: 1em;
   background: white; }
+  .hentry .entry-header h1 {
+    margin-bottom: 0; }
 
 .byline, .updated:not(.published) {
   display: none; }
@@ -561,7 +570,10 @@ a {
 .single .byline, .group-blog .byline {
   display: inline; }
 
-.page-content, .entry-content, .entry-summary {
+.entry-content {
+  margin: 1em 0 0; }
+
+.page-content, .entry-summary {
   margin: 1.5em 0 0; }
 
 .page-links {
