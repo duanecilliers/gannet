@@ -150,6 +150,11 @@ require get_template_directory() . '/inc/customizer-library/customizer-library.p
 require get_template_directory() . '/inc/customizer.php';
 
 /**
+ * Customizer styles.
+ */
+require get_template_directory() . '/inc/styles.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
