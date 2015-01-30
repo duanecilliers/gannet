@@ -128,6 +128,13 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/extras.php';
 
 /**
+ * Customizer Library
+ *
+ * @link https://github.com/devinsays/customizer-library Customizer Library
+ */
+require get_template_directory() . '/inc/customizer-library/customizer-library.php';
+
+/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
