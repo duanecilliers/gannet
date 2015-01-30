@@ -3,7 +3,7 @@
 }
 
 .hentry {
-	margin: 0 0 1.5em;
+	margin: 0 0 2em;
 	padding: 1em;
 	background: white;
 
@@ -24,6 +24,10 @@
 
 .entry-content {
 	margin: 1em 0 0;
+
+	p:first-child {
+		margin-top: 0;
+	}
 }
 
 .page-content,
@@ -34,4 +38,37 @@
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+.format-quote {
+	.entry-content {
+		margin: 0;
+
+		blockquote {
+			margin: 1em 0 0;
+			padding: 0 0 0 1.5em;
+
+			p {
+				margin-bottom: 0;
+			}
+		}
+
+		&:before {
+			font-family: FontAwesome;
+			content: "\f10d";
+			color: $color__gray;
+			float: left;
+		}
+	}
+}
+
+.format-aside {
+	.entry-content {
+		&:before {
+			font-family: FontAwesome;
+			content: "\f02e";
+			color: $color__gray;
+			float: left;
+		}
+	}
 }
