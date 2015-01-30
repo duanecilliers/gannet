@@ -561,8 +561,8 @@ a {
   margin: 0 0 1.5em;
   padding: 1em;
   background: white; }
-  .hentry .entry-header h1 {
-    margin-bottom: 0; }
+  .hentry .entry-title {
+    margin: 0; }
 
 .byline, .updated:not(.published) {
   display: none; }
