@@ -109,6 +109,16 @@ function gannet_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	$fonts = array(
+        get_theme_mod( 'primary-font', customizer_library_get_default( 'primary-font' ) ),
+        get_theme_mod( 'secondary-font', customizer_library_get_default( 'secondary-font' ) )
+    );
+
+    $font_uri = customizer_library_get_google_font_uri( $fonts );
+
+    // Load Google Fonts
+    wp_enqueue_style( 'gannet-fonts', $font_uri, array(), null, 'screen' );
 }
 add_action( 'wp_enqueue_scripts', 'gannet_scripts' );
 
