@@ -23,24 +23,25 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 ----------------------------------------------------------------
 1.0 Normalize
 2.0 Typography
-3.0 Elements
-	3.1 Site branding
-4.0 Forms
-5.0 Navigation
-	5.1 Links
-	5.2 Menus
-6.0 Accessibility
-7.0 Alignments
-8.0 Clearings
-9.0 Widgets
-10.0 Content
-	10.1 Posts and pages
-	10.2 Asides
-	10.3 Comments
-11.0 Infinite scroll
-12.0 Media
-	12.1 Captions
-	12.2 Galleries
+3.0 Layout
+4.0 Elements
+	4.1 Site branding
+5.0 Forms
+6.0 Navigation
+	6.1 Links
+	6.2 Menus
+7.0 Accessibility
+8.0 Alignments
+9.0 Clearings
+10.0 Widgets
+11.0 Content
+	11.1 Posts and pages
+	11.2 Asides
+	11.3 Comments
+12.0 Infinite scroll
+13.0 Media
+	13.1 Captions
+	13.2 Galleries
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 1.0 Normalize
@@ -249,7 +250,38 @@ big {
   font-size: 125%; }
 
 /*--------------------------------------------------------------
-3.0 Elements
+3.0 Layout
+--------------------------------------------------------------*/
+.content-sidebar .content-area {
+  float: left;
+  margin: 0 -25% 0 0;
+  width: 100%; }
+.content-sidebar .site-main {
+  margin: 0 25% 0 0; }
+.content-sidebar .site-content .widget-area {
+  float: right;
+  overflow: hidden;
+  width: 25%; }
+.content-sidebar .site-footer {
+  clear: both;
+  width: 100%; }
+
+.sidebar-content .content-area {
+  float: right;
+  margin: 0 0 0 -25%;
+  width: 100%; }
+.sidebar-content .site-main {
+  margin: 0 0 0 25%; }
+.sidebar-content .site-content .widget-area {
+  float: left;
+  overflow: hidden;
+  width: 25%; }
+.sidebar-content .site-footer {
+  clear: both;
+  width: 100%; }
+
+/*--------------------------------------------------------------
+4.0 Elements
 --------------------------------------------------------------*/
 html {
   -moz-box-sizing: border-box;
@@ -324,7 +356,7 @@ table {
   font-size: 1.275em; }
 
 /*--------------------------------------------------------------
-4.0 Forms
+5.0 Forms
 --------------------------------------------------------------*/
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   border: 1px solid;
@@ -363,7 +395,7 @@ textarea {
   width: 100%; }
 
 /*--------------------------------------------------------------
-5.0 Navigation
+6.0 Navigation
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 5.1 Links
@@ -440,7 +472,7 @@ a {
   width: 50%; }
 
 /*--------------------------------------------------------------
-6.0 Accessibility
+7.0 Accessibility
 --------------------------------------------------------------*/
 /* Text meant only for screen readers. */
 .screen-reader-text {
@@ -470,7 +502,7 @@ a {
     /* Above WP toolbar. */ }
 
 /*--------------------------------------------------------------
-7.0 Alignments
+8.0 Alignments
 --------------------------------------------------------------*/
 .alignleft {
   display: inline;
@@ -498,7 +530,7 @@ a {
   clear: both; }
 
 /*--------------------------------------------------------------
-9.0 Widgets
+10.0 Widgets
 --------------------------------------------------------------*/
 .widget {
   margin: 0 0 1.5em;
@@ -511,7 +543,7 @@ a {
   display: none; }
 
 /*--------------------------------------------------------------
-10.0 Content
+11.0 Content
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 10.1 Posts and pages
@@ -520,7 +552,8 @@ a {
   display: block; }
 
 .hentry {
-  margin: 0 0 1.5em; }
+  margin: 0 0 1.5em;
+  background: white; }
 
 .byline, .updated:not(.published) {
   display: none; }
@@ -551,7 +584,7 @@ a {
   display: block; }
 
 /*--------------------------------------------------------------
-11.0 Infinite scroll
+12.0 Infinite scroll
 --------------------------------------------------------------*/
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
 .infinite-scroll .posts-navigation, .infinite-scroll.neverending .site-footer {
@@ -563,7 +596,7 @@ a {
   display: block; }
 
 /*--------------------------------------------------------------
-12.0 Media
+13.0 Media
 --------------------------------------------------------------*/
 .page-content .wp-smiley, .entry-content .wp-smiley, .comment-content .wp-smiley {
   border: none;
