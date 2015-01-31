@@ -88,3 +88,15 @@
 		}
 	}
 }
+
+.format-link {
+	.posted-on {
+		&:before {
+			font-family: FontAwesome;
+			content: "\f0c1";
+			color: $color__gray;
+			float: left;
+			margin-right: 5px;
+		}
+	}
+}

@@ -2337,6 +2337,13 @@ a {
   float: left;
   margin-right: 5px; }
 
+.format-link .posted-on:before {
+  font-family: FontAwesome;
+  content: "\f0c1";
+  color: #a09f9f;
+  float: left;
+  margin-right: 5px; }
+
 /*--------------------------------------------------------------
 10.2 Asides
 --------------------------------------------------------------*/
