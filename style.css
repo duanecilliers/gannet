@@ -2142,6 +2142,10 @@ a {
 
 .hentry a {
   color: #d64760; }
+  .hentry a:visited {
+    color: #962136; }
+  .hentry a:hover, .hentry a:focus, .hentry a:active {
+    color: #bf2b45; }
 
 /*--------------------------------------------------------------
 5.2 Menus
