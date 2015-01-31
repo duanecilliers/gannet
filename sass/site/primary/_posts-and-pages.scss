@@ -40,11 +40,21 @@
 	margin: 0 0 1.5em;
 }
 
-.hentry .posted-on:before {
-	font-family: FontAwesome;
-	color: $color__gray;
-	float: left;
-	margin-right: 5px;
+.hentry .posted-on,
+.entry-footer .comments-link {
+	&:before {
+		font-family: FontAwesome;
+		color: $color__gray;
+		float: left;
+		margin-right: 5px;
+	}
+}
+
+.entry-footer {
+	.comments-link:before {
+		content: "\f075";
+		color: $color__link-dark;
+	}
 }
 
 .format-quote {

@@ -2308,11 +2308,15 @@ a {
   clear: both;
   margin: 0 0 1.5em; }
 
-.hentry .posted-on:before {
+.hentry .posted-on:before, .entry-footer .comments-link:before {
   font-family: FontAwesome;
   color: #a09f9f;
   float: left;
   margin-right: 5px; }
+
+.entry-footer .comments-link:before {
+  content: "\f075";
+  color: #d64760; }
 
 .format-quote .posted-on:before {
   content: "\f10d"; }
