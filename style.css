@@ -2323,26 +2323,23 @@ a {
     .format-quote .entry-content blockquote p {
       margin-bottom: 0; }
 
-.format-aside .posted-on:before {
+.hentry .posted-on:before {
   font-family: FontAwesome;
-  content: "\f0f6";
   color: #a09f9f;
   float: left;
   margin-right: 5px; }
+
+.format-aside .posted-on:before {
+  content: "\f0f6"; }
 
 .format-video .posted-on:before {
-  font-family: FontAwesome;
-  content: "\f03d";
-  color: #a09f9f;
-  float: left;
-  margin-right: 5px; }
+  content: "\f03d"; }
 
 .format-link .posted-on:before {
-  font-family: FontAwesome;
-  content: "\f0c1";
-  color: #a09f9f;
-  float: left;
-  margin-right: 5px; }
+  content: "\f0c1"; }
+
+.format-image .posted-on:before {
+  content: "\f03e"; }
 
 /*--------------------------------------------------------------
 10.2 Asides
