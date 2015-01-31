@@ -17,11 +17,19 @@
 
 	<div class="entry-content">
 		<?php
-			/* translators: %s: Name of current post */
-			the_content( sprintf(
-				__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'gannet' ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
+			if ( '' == get_post_format() ) {
+				if ( has_post_thumbnail() ) {
+					the_post_thumbnail( 'medium' );
+				} else {
+					the_excerpt();
+				}
+			} else {
+				/* translators: %s: Name of current post */
+				the_content( sprintf(
+					__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'gannet' ),
+					the_title( '<span class="screen-reader-text">"', '"</span>', false )
+				) );
+			}
 		?>
 
 		<?php
