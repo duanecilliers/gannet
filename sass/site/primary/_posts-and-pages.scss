@@ -63,12 +63,13 @@
 }
 
 .format-aside {
-	.entry-content {
+	.entry-header {
 		&:before {
 			font-family: FontAwesome;
-			content: "\f02e";
+			content: "\f0f6";
 			color: $color__gray;
 			float: left;
+			margin-right: 5px;
 		}
 	}
 }

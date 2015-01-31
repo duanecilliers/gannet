@@ -2316,11 +2316,12 @@ a {
     color: #a09f9f;
     float: left; }
 
-.format-aside .entry-content:before {
+.format-aside .entry-header:before {
   font-family: FontAwesome;
-  content: "\f02e";
+  content: "\f0f6";
   color: #a09f9f;
-  float: left; }
+  float: left;
+  margin-right: 5px; }
 
 /*--------------------------------------------------------------
 10.2 Asides
