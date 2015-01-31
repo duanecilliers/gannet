@@ -2017,7 +2017,12 @@ html {
 
 body {
   background: #fff;
-  /* Fallback for when there is no custom background color defined. */ }
+  /* Fallback for when there is no custom background color defined. */
+  background-image: url('images/overlay.png'), -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.65)), url('images/bg.jpg');
+  background-image: url('images/overlay.png'), linear-gradient(top, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.65)), url('images/bg.jpg');
+  background-position: top left, bottom left, auto;
+  background-size: auto, 100% 100%, cover;
+  background-repeat: repeat, no-repeat; }
 
 blockquote:before, blockquote:after, q:before, q:after {
   content: ""; }
@@ -2303,22 +2308,31 @@ a {
   clear: both;
   margin: 0 0 1.5em; }
 
+.format-quote .posted-on:before {
+  font-family: FontAwesome;
+  content: "\f10d";
+  color: #a09f9f;
+  float: left;
+  margin-right: 5px; }
 .format-quote .entry-content {
   margin: 0; }
   .format-quote .entry-content blockquote {
-    margin: 1em 0 0;
-    padding: 0 0 0 1.5em; }
+    margin: 1em 0;
+    padding: 0 0 0 1em;
+    border-left: 1px solid #e7e7e7; }
     .format-quote .entry-content blockquote p {
       margin-bottom: 0; }
-  .format-quote .entry-content:before {
-    font-family: FontAwesome;
-    content: "\f10d";
-    color: #a09f9f;
-    float: left; }
 
-.format-aside .entry-header:before {
+.format-aside .posted-on:before {
   font-family: FontAwesome;
   content: "\f0f6";
+  color: #a09f9f;
+  float: left;
+  margin-right: 5px; }
+
+.format-video .posted-on:before {
+  font-family: FontAwesome;
+  content: "\f03d";
   color: #a09f9f;
   float: left;
   margin-right: 5px; }
