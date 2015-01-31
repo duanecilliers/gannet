@@ -133,6 +133,11 @@ add_action( 'wp_enqueue_scripts', 'gannet_scripts' );
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
+ * Utility functions for this theme.
+ */
+require get_template_directory() . '/inc/util.php';
+
+/**
  * Custom functions that act independently of the theme templates.
  */
 require get_template_directory() . '/inc/extras.php';
