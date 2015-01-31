@@ -40,14 +40,17 @@
 	margin: 0 0 1.5em;
 }
 
+.hentry .posted-on:before {
+	font-family: FontAwesome;
+	color: $color__gray;
+	float: left;
+	margin-right: 5px;
+}
+
 .format-quote {
 	.posted-on {
 		&:before {
-			font-family: FontAwesome;
 			content: "\f10d";
-			color: $color__gray;
-			float: left;
-			margin-right: 5px;
 		}
 	}
 	.entry-content {
@@ -65,41 +68,22 @@
 	}
 }
 
-.hentry .posted-on:before {
-	font-family: FontAwesome;
-	color: $color__gray;
-	float: left;
-	margin-right: 5px;
+.format-aside .posted-on:before {
+	content: "\f0f6";
 }
 
-.format-aside {
-	.posted-on {
-		&:before {
-			content: "\f0f6";
-		}
-	}
+.format-video .posted-on:before {
+	content: "\f03d";
 }
 
-.format-video {
-	.posted-on {
-		&:before {
-			content: "\f03d";
-		}
-	}
+.format-link .posted-on:before {
+	content: "\f0c1";
 }
 
-.format-link {
-	.posted-on {
-		&:before {
-			content: "\f0c1";
-		}
-	}
+.format-image .posted-on:before {
+	content: "\f03e";
 }
 
-.format-image {
-	.posted-on {
-		&:before {
-			content: "\f03e";
-		}
-	}
+.format-gallery .posted-on:before {
+	content: "\f008";
 }

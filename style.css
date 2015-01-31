@@ -2308,12 +2308,14 @@ a {
   clear: both;
   margin: 0 0 1.5em; }
 
-.format-quote .posted-on:before {
+.hentry .posted-on:before {
   font-family: FontAwesome;
-  content: "\f10d";
   color: #a09f9f;
   float: left;
   margin-right: 5px; }
+
+.format-quote .posted-on:before {
+  content: "\f10d"; }
 .format-quote .entry-content {
   margin: 0; }
   .format-quote .entry-content blockquote {
@@ -2322,12 +2324,6 @@ a {
     border-left: 1px solid #e7e7e7; }
     .format-quote .entry-content blockquote p {
       margin-bottom: 0; }
-
-.hentry .posted-on:before {
-  font-family: FontAwesome;
-  color: #a09f9f;
-  float: left;
-  margin-right: 5px; }
 
 .format-aside .posted-on:before {
   content: "\f0f6"; }
@@ -2340,6 +2336,9 @@ a {
 
 .format-image .posted-on:before {
   content: "\f03e"; }
+
+.format-gallery .posted-on:before {
+  content: "\f008"; }
 
 /*--------------------------------------------------------------
 10.2 Asides
