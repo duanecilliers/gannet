@@ -31,3 +31,21 @@ a {
 		color: $color__link-dark-hover;
 	}
 }
+
+.nav-links {
+	a {
+		@extend .btn;
+		&:before,
+		&:after {
+			font-family: FontAwesome;
+		}
+	}
+	.nav-next a:after {
+		content: "\f105";
+		padding-left: 5px;
+	}
+	.nav-previous a:before {
+		content: "\f104";
+		padding-right: 5px;
+	}
+}

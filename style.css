@@ -2084,6 +2084,33 @@ table {
   font-weight: normal;
   font-size: 1.275em; }
 
+.btn, .nav-links a {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 0.2em 0.4em;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  background-color: #d64760;
+  color: white;
+  -webkit-transition: all ease-out 0.2s;
+          transition: all ease-out 0.2s; }
+  .btn:focus, .nav-links a:focus, .btn.focus, .nav-links a.focus, .btn:active:focus, .nav-links a:active:focus, .btn:active.focus, .nav-links a:active.focus, .btn.active:focus, .nav-links a.active:focus, .btn.active.focus, .nav-links a.active.focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+  .btn:hover, .nav-links a:hover, .btn:focus, .nav-links a:focus {
+    color: white;
+    text-decoration: none;
+    background-color: #bf2b45; }
+  .btn:active, .nav-links a:active {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }
+
 /*--------------------------------------------------------------
 5.0 Forms
 --------------------------------------------------------------*/
@@ -2147,6 +2174,15 @@ a {
     color: #962136; }
   .hentry a:hover, .hentry a:focus, .hentry a:active {
     color: #bf2b45; }
+
+.nav-links a:before, .nav-links a:after {
+  font-family: FontAwesome; }
+.nav-links .nav-next a:after {
+  content: "\f105";
+  padding-left: 5px; }
+.nav-links .nav-previous a:before {
+  content: "\f104";
+  padding-right: 5px; }
 
 /*--------------------------------------------------------------
 5.2 Menus

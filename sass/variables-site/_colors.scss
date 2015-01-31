@@ -9,11 +9,13 @@ $color__gray: #a09f9f;
 $color__gray-light: #ccc;
 $color__gray-lighter: #e7e7e7;
 
+$color__brand-primary: #d64760;
+
 $color__text-screen: #21759b;
 $color__text-input: #666;
 $color__text-input-focus: #111;
 $color__link: white;
-$color__link-dark: #d64760;
+$color__link-dark: $color__brand-primary;
 $color__link-visited: white;
 $color__link-hover: $color__gray-lighter;
 $color__link-dark-visited: darken($color__link-dark, 20%);
