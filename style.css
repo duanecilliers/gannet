@@ -106,9 +106,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
     left: -1.8571428571em; }
 
 .fa-border {
-  padding: 0.2em 0.25em 0.15em;
-  border: solid 0.08em #eee;
-  border-radius: 0.1em; }
+  padding: .2em .25em .15em;
+  border: solid .08em #eee;
+  border-radius: .1em; }
 
 .pull-right {
   float: right; }
@@ -117,9 +117,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   float: left; }
 
 .fa.pull-left {
-  margin-right: 0.3em; }
+  margin-right: .3em; }
 .fa.pull-right {
-  margin-left: 0.3em; }
+  margin-left: .3em; }
 
 .fa-spin {
   -webkit-animation: fa-spin 2s infinite linear;
@@ -1836,8 +1836,7 @@ figure {
   margin: 1em 40px; }
 
 hr {
-  -moz-box-sizing: content-box;
-       box-sizing: content-box;
+  box-sizing: content-box;
   height: 0; }
 
 pre {
@@ -1873,8 +1872,7 @@ input {
   line-height: normal; }
 
 input[type="checkbox"], input[type="radio"] {
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0; }
 
 input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
@@ -1882,8 +1880,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 
 input[type="search"] {
   -webkit-appearance: textfield;
-  -moz-box-sizing: content-box;
-       box-sizing: content-box; }
+  box-sizing: content-box; }
 
 input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
@@ -1972,6 +1969,9 @@ small {
 big {
   font-size: 125%; }
 
+.site-info {
+  color: #e7e7e7; }
+
 /*--------------------------------------------------------------
 3.0 Layout
 --------------------------------------------------------------*/
@@ -2010,20 +2010,18 @@ big {
 4.0 Elements
 --------------------------------------------------------------*/
 html {
-  -moz-box-sizing: border-box;
-       box-sizing: border-box; }
+  box-sizing: border-box; }
 
 *, *:before, *:after {
   /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-  -moz-box-sizing: inherit;
-       box-sizing: inherit; }
+  box-sizing: inherit; }
 
 body {
   background: #fff;
   /* Fallback for when there is no custom background color defined. */
-  background-image: url('images/overlay.png'), -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.65)), url('images/bg.jpg');
-  background-image: url('images/overlay.png'), linear-gradient(top, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.65)), url('images/bg.jpg');
-  background-position: top left, bottom left, auto;
+  background-image: url('images/overlay.png'), -webkit-linear-gradient(top, transparent 75%, rgba(0, 0, 0, 0.65)), url('images/bg.jpg');
+  background-image: url('images/overlay.png'), linear-gradient(top, transparent 75%, rgba(0, 0, 0, 0.65)), url('images/bg.jpg');
+  background-position: top left,						bottom left,														auto;
   background-size: auto, 100% 100%, cover;
   background-repeat: repeat, no-repeat; }
 
@@ -2099,7 +2097,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
   font-size: 12px;
   font-size: 0.75rem;
   line-height: 1;
-  padding: 0.6em 1em 0.4em;
+  padding: .6em 1em .4em;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); }
 
 button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover {
@@ -2135,9 +2133,9 @@ a {
   color: white;
   text-decoration: none; }
   a:visited {
-    color: purple; }
+    color: white; }
   a:hover, a:focus, a:active {
-    color: midnightblue; }
+    color: #e7e7e7; }
   a:focus {
     outline: thin dotted; }
   a:hover, a:active {
@@ -2192,10 +2190,8 @@ a {
 @media screen and (max-width: 600px) {
   .menu-toggle, .main-navigation.toggled .nav-menu {
     display: block; }
-
   .main-navigation ul {
-    display: none; }
- }
+    display: none; } }
 
 .site-main .comment-navigation, .site-main .posts-navigation, .site-main .post-navigation {
   margin: 0 0 1.5em;
