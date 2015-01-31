@@ -55,6 +55,11 @@
 		content: "\f075";
 		color: $color__link-dark;
 	}
+	.edit-link {
+		margin-left: 5px;
+		padding-left: 5px;
+		border-left: 1px solid $color__gray-lighter;
+	}
 }
 
 .format-quote {
