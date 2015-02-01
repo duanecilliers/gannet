@@ -1952,7 +1952,17 @@ dfn, cite, em, i {
   font-style: italic; }
 
 blockquote {
-  margin: 0 1.5em; }
+  padding: 0 1.5em;
+  margin: 0;
+  border-width: 0 0 0 1px;
+  border-style: solid;
+  border-color: #b9b9b9; }
+  blockquote cite {
+    display: block;
+    margin-top: 1em; }
+    blockquote cite:before {
+      content: "\2014";
+      margin-right: 5px; }
 
 address {
   margin: 0 0 1.5em; }
