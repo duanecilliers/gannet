@@ -13,7 +13,7 @@
 		// 	linkBottom = $('.line-bottom'),
 		// 	linkLeft = $('.line-left');
 
-		var selectors = ['.btn', '.nav-links a'],
+		var selectors = ['.btn', '.nav-links a', 'button', 'input[type="button"]', 'input[type="reset"]', 'input[type="submit"]'],
 			markup = '<div class="line-top">&nbsp;</div>' +
 						'<div class="line-right">&nbsp;</div>' +
 						'<div class="line-bottom">&nbsp;</div>' +

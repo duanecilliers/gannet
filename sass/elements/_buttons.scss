@@ -8,10 +8,10 @@
 	touch-action: manipulation;
 	cursor: pointer;
 	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-	border: 1px solid darken($color__gray-light, 10%);
+	border: 2px solid $color__gray-lighter;
 	white-space: nowrap;
-	background-color: transparent;
-	color: $color__gray-light;
+	background-color: rgba(255,255,255, .1);
+	color: $color__gray-lighter;
 	text-decoration: none;
 	transition: all ease-out 0.1s;
 
@@ -85,5 +85,27 @@
 		.line-left {
 			height: 100%;
 		}
+	}
+}
+
+.btn-dark {
+	border-color: $color__gray-darker;
+	color: $color__gray-darker;
+
+	/**
+	 * Animation
+	 */
+	.line-top,
+	.line-right,
+	.line-bottom,
+	.line-left {
+		background: black;
+	}
+}
+
+input[type="submit"].btn {
+	position: relative;
+	&:hover {
+		border-color: black;
 	}
 }
