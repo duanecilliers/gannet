@@ -2215,7 +2215,8 @@ a {
     outline: 0; }
 
 .hentry a {
-  color: #d64760; }
+  color: #d64760;
+  text-decoration: none; }
   .hentry a:visited {
     color: #962136; }
   .hentry a:hover, .hentry a:focus, .hentry a:active {
