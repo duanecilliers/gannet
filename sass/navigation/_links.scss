@@ -20,7 +20,9 @@ a {
 	}
 }
 
-.hentry a {
+.hentry a,
+#respond a,
+#comments a {
 	color: $color__link-dark;
 	text-decoration: none;
 

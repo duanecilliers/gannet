@@ -2216,12 +2216,12 @@ a {
   a:hover, a:active {
     outline: 0; }
 
-.hentry a {
+.hentry a, #respond a, #comments a {
   color: #d64760;
   text-decoration: none; }
-  .hentry a:visited {
+  .hentry a:visited, #respond a:visited, #comments a:visited {
     color: #962136; }
-  .hentry a:hover, .hentry a:focus, .hentry a:active {
+  .hentry a:hover, .hentry a:focus, .hentry a:active, #respond a:hover, #respond a:focus, #respond a:active, #comments a:hover, #comments a:focus, #comments a:active {
     color: #bf2b45; }
 
 .nav-links a:before, .nav-links a:after {
@@ -2465,12 +2465,15 @@ a {
 /*--------------------------------------------------------------
 10.3 Comments
 --------------------------------------------------------------*/
-#respond {
+#comments {
   padding: 1em;
   margin-bottom: 2em;
   background-color: white;
   background-color: rgba(255, 255, 255, 0.9);
   color: #404040; }
+
+.comments-title {
+  margin-top: 0; }
 
 .comment-content a {
   word-wrap: break-word; }
