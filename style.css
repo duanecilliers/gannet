@@ -2105,6 +2105,7 @@ table {
   white-space: nowrap;
   background-color: transparent;
   color: #b9b9b9;
+  text-decoration: none;
   -webkit-transition: all ease-out 0.1s;
           transition: all ease-out 0.1s;
   /**
@@ -2200,10 +2201,12 @@ textarea {
 5.1 Links
 --------------------------------------------------------------*/
 a {
-  color: white;
-  text-decoration: none; }
+  color: #b9b9b9;
+  text-decoration: dotted;
+  -webkit-transition: all 0.1s ease-out;
+          transition: all 0.1s ease-out; }
   a:visited {
-    color: white; }
+    color: #adacac; }
   a:hover, a:focus, a:active {
     color: #d3d2d2; }
   a:focus {
