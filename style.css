@@ -2578,6 +2578,9 @@ a {
 embed, iframe, object {
   max-width: 100%; }
 
+figure {
+  margin-left: 0; }
+
 /*--------------------------------------------------------------
 12.1 Captions
 --------------------------------------------------------------*/
@@ -2589,7 +2592,13 @@ embed, iframe, object {
     margin-left: auto;
     margin-right: auto; }
   .wp-caption .wp-caption-text {
-    margin: 0.8075em 0; }
+    margin: 0.8075em 0;
+    background: #878585;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    margin-top: 0;
+    padding: 0.5em 0.2em;
+    font-style: italic; }
 
 .wp-caption-text {
   text-align: center; }
