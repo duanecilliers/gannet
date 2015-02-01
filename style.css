@@ -2246,6 +2246,11 @@ textarea {
   padding-left: 3px;
   width: 100%; }
 
+.post-password-form label {
+  font-weight: bold; }
+.post-password-form label, .post-password-form input {
+  display: inline-block; }
+
 /*--------------------------------------------------------------
 6.0 Navigation
 --------------------------------------------------------------*/

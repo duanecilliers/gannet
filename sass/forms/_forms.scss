@@ -1,3 +1,14 @@
 @import "buttons";
 
 @import "fields";
+
+.post-password-form {
+
+	label {
+		font-weight: bold;
+	}
+	label,
+	input {
+		display: inline-block;
+	}
+}
