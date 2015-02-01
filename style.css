@@ -1968,7 +1968,7 @@ address {
   margin: 0 0 1.5em; }
 
 pre {
-  background: #eee;
+  background: #faecef;
   font-family: "Courier 10 Pitch", Courier, monospace;
   font-size: 15px;
   font-size: 0.9375rem;
@@ -1976,7 +1976,8 @@ pre {
   margin-bottom: 1.6em;
   max-width: 100%;
   overflow: auto;
-  padding: 1.6em; }
+  padding: 1.6em;
+  border: 1px dashed #d64760; }
 
 code, kbd, tt, var {
   font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
@@ -1985,11 +1986,14 @@ code, kbd, tt, var {
 
 abbr, acronym {
   border-bottom: 1px dotted #666;
-  cursor: help; }
+  cursor: help;
+  color: #878585; }
 
 mark, ins {
-  background: #fff9c0;
-  text-decoration: none; }
+  background: #db5c72;
+  text-decoration: none;
+  color: white;
+  padding: 0 0.125em; }
 
 small {
   font-size: 75%; }
@@ -2093,9 +2097,23 @@ img {
   max-width: 100%;
   /* Adhere to container width. */ }
 
-table {
+table, tr {
   margin: 0 0 1.5em;
-  width: 100%; }
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: 1px solid #a09f9f; }
+
+tr {
+  border-width: 0 0 1px 0; }
+
+th, td {
+  padding: 0.5em;
+  text-align: left; }
+
+th {
+  font-weight: bold;
+  text-decoration: underline; }
 
 .site-branding {
   text-align: center;

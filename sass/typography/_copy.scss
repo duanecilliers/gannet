@@ -40,6 +40,7 @@ pre {
 	max-width: 100%;
 	overflow: auto;
 	padding: 1.6em;
+	border: 1px dashed $color__brand-primary;
 }
 
 code, kbd, tt, var {
@@ -50,11 +51,14 @@ code, kbd, tt, var {
 abbr, acronym {
 	border-bottom: 1px dotted $color__border-abbr;
 	cursor: help;
+	color: $color__gray-dark;
 }
 
 mark, ins {
 	background: $color__background-ins;
 	text-decoration: none;
+	color: white;
+	padding: 0 0.125em;
 }
 
 small {
