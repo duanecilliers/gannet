@@ -41,6 +41,18 @@
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+
+	a {
+		@extend .btn;
+		@extend .btn-dark;
+		padding: 0.1em 0.5em;
+		color: $color__gray-darker;
+
+		&:hover {
+			color: black;
+			border-color: black;
+		}
+	}
 }
 
 .cat-links,
