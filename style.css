@@ -2374,6 +2374,7 @@ a {
   margin: 0 0 2em;
   padding: 1em;
   background: white;
+  opacity: .9;
   color: #404040;
   word-wrap: break-word; }
   .hentry .entry-title {
