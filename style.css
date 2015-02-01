@@ -2599,12 +2599,16 @@ embed, iframe, object {
 --------------------------------------------------------------*/
 .gallery {
   margin-bottom: 1.5em; }
+  .gallery.gallery-mini img {
+    margin-right: 0.5em; }
 
 .gallery-item {
+  margin: 0.5em;
   display: inline-block;
   text-align: center;
   vertical-align: top;
-  width: 100%; }
+  width: 30.33%;
+  text-align: center; }
 
 .gallery-columns-2 .gallery-item {
   max-width: 50%; }
