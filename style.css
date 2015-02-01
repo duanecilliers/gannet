@@ -2222,8 +2222,19 @@ button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type=
 
 input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], textarea {
   color: #666;
-  border: 1px solid #ccc;
-  border-radius: 3px; }
+  border-width: 2px;
+  border-style: dotted;
+  border-color: transparent;
+  border-bottom-color: #b9b9b9;
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 100%; }
+  input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, textarea:focus {
+    border-bottom-color: #d64760;
+    outline: 0; }
+  #secondary input[type="text"], #secondary input[type="email"], #secondary input[type="url"], #secondary input[type="password"], #secondary input[type="search"], #secondary textarea {
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.5); }
 
 input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, textarea:focus {
   color: #111; }
@@ -2510,6 +2521,9 @@ a {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.9);
   color: #404040; }
+
+#respond form label {
+  display: block; }
 
 .comments-title {
   margin-top: 0; }

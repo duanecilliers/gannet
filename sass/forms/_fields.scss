@@ -5,8 +5,23 @@ input[type="password"],
 input[type="search"],
 textarea {
 	color: $color__text-input;
-	border: 1px solid $color__border-input;
-	border-radius: 3px;
+	border-width: 2px;
+	border-style: dotted;
+	border-color: transparent;
+	border-bottom-color: $color__border-input;
+	background-color: white;
+	background-color: rgba(255,255,255,0.6);
+	width: 100%;
+
+	&:focus {
+		border-bottom-color: $color__brand-primary;
+		outline: 0;
+	}
+
+	#secondary & {
+		background-color: black;
+		background-color: rgba(0,0,0,.5);
+	}
 }
 
 input[type="text"]:focus,

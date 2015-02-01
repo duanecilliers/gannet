@@ -28,5 +28,5 @@ $color__text-main: #404040;
 $color__border-button: $color__brand-primary;
 $color__border-button-hover: darken($color__brand-primary, 10%);
 $color__border-button-focus: #aaa #bbb #bbb;
-$color__border-input: #ccc;
+$color__border-input: $color__gray-light;
 $color__border-abbr: #666;
