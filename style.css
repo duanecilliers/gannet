@@ -2043,7 +2043,8 @@ hr {
   margin-bottom: 1.5em; }
 
 ul, ol {
-  margin: 0 0 1.5em 3em; }
+  margin: 0 0 1.5em 3em;
+  padding: 0; }
 
 ul {
   list-style: disc; }
@@ -2351,6 +2352,12 @@ a {
 /*--------------------------------------------------------------
 10.0 Widgets
 --------------------------------------------------------------*/
+#secondary {
+  padding: 1em;
+  word-wrap: break-word;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8); }
+
 .widget {
   margin: 0 0 1.5em;
   /* Make sure select elements fit in widgets. */ }
@@ -2373,8 +2380,8 @@ a {
 .hentry {
   margin: 0 0 2em;
   padding: 1em;
-  background: white;
-  opacity: .9;
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   color: #404040;
   word-wrap: break-word; }
   .hentry .entry-title {
