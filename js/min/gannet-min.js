@@ -1,0 +1,1 @@
+!function($){var n=function(){console.log("gannet.js initiated"),i()},i=function(){var n=[".btn",".nav-links a"],i='<div class="line-top">&nbsp;</div><div class="line-right">&nbsp;</div><div class="line-bottom">&nbsp;</div><div class="line-left">&nbsp;</div>';$.each(n,function(n,s){$(s).append(i)})};n()}(jQuery);

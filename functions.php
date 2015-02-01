@@ -119,6 +119,8 @@ function gannet_scripts() {
 
     // Load Google Fonts
     wp_enqueue_style( 'gannet-fonts', $font_uri, array(), null, 'screen' );
+
+    wp_enqueue_script( 'gannet-theme', get_template_directory_uri() . '/js/gannet.js', array( 'jquery' ), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'gannet_scripts' );
 
