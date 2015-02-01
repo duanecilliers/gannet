@@ -2534,8 +2534,6 @@ a {
     border-bottom: 1px dotted #a09f9f; }
     #comments .comment:last-child {
       border-bottom: none; }
-  #comments .depth-2 {
-    background: rgba(0, 0, 0, 0.1); }
 
 .comment-author img {
   float: left;
