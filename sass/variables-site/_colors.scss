@@ -1,15 +1,17 @@
-$color__background-body: #fff;
+$color__gray: #a09f9f;
+$color__gray-dark: darken($color__gray, 10%);
+$color__gray-darker: darken($color__gray, 20%);
+$color__gray-light: lighten($color__gray, 10%);
+$color__gray-lighter: lighten($color__gray, 20%);
+
+$color__brand-primary: #d64760;
+
+$color__background-body: $color__gray-light;
 $color__background-screen: #f1f1f1;
 $color__background-hr: #ccc;
 $color__background-button: #e6e6e6;
 $color__background-pre: #eee;
 $color__background-ins: #fff9c0;
-
-$color__gray: #a09f9f;
-$color__gray-light: #ccc;
-$color__gray-lighter: #e7e7e7;
-
-$color__brand-primary: #d64760;
 
 $color__text-screen: #21759b;
 $color__text-input: #666;

@@ -1917,6 +1917,9 @@ body, button, input, select, textarea {
   font-size: 1rem;
   line-height: 1.5; }
 
+body {
+  color: #b9b9b9; }
+
 h1, h2, h3, h4, h5, h6 {
   clear: both;
   font-family: "Quattrocento", serif; }
@@ -1970,7 +1973,6 @@ big {
   font-size: 125%; }
 
 .site-info {
-  color: #e7e7e7;
   text-align: center; }
 
 /*--------------------------------------------------------------
@@ -2018,7 +2020,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  background-color: #fff;
+  background-color: #b9b9b9;
   /* Fallback for when there is no custom background color defined. */
   background-image: url('images/overlay.png'), -webkit-linear-gradient(top, transparent 75%, rgba(0, 0, 0, 0.65)), url('images/bg.jpg');
   background-image: url('images/overlay.png'), linear-gradient(top, transparent 75%, rgba(0, 0, 0, 0.65)), url('images/bg.jpg');
@@ -2099,10 +2101,10 @@ table {
       touch-action: manipulation;
   cursor: pointer;
   background-image: none;
-  border: 1px solid #b3b3b3;
+  border: 1px solid #a09f9f;
   white-space: nowrap;
   background-color: transparent;
-  color: #ccc;
+  color: #b9b9b9;
   -webkit-transition: all ease-out 0.1s;
           transition: all ease-out 0.1s;
   /**
@@ -2203,7 +2205,7 @@ a {
   a:visited {
     color: white; }
   a:hover, a:focus, a:active {
-    color: #e7e7e7; }
+    color: #d3d2d2; }
   a:focus {
     outline: thin dotted; }
   a:hover, a:active {
@@ -2366,7 +2368,8 @@ a {
 .hentry {
   margin: 0 0 2em;
   padding: 1em;
-  background: white; }
+  background: white;
+  color: #404040; }
   .hentry .entry-title {
     margin: 0; }
 
@@ -2403,7 +2406,7 @@ a {
 .entry-footer .edit-link {
   margin-left: 5px;
   padding-left: 5px;
-  border-left: 1px solid #e7e7e7; }
+  border-left: 1px solid #d3d2d2; }
 
 .format-quote .posted-on:before {
   content: "\f10d"; }
@@ -2412,7 +2415,7 @@ a {
   .format-quote .entry-content blockquote {
     margin: 1em 0;
     padding: 0 0 0 1em;
-    border-left: 1px solid #e7e7e7; }
+    border-left: 1px solid #d3d2d2; }
     .format-quote .entry-content blockquote p {
       margin-bottom: 0; }
 

@@ -9,6 +9,10 @@ textarea {
 	line-height: $font__line-height-body;
 }
 
+body {
+	color: $color__gray-light;
+}
+
 @import "headings";
 
 @import "copy";
