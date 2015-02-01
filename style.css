@@ -2043,7 +2043,7 @@ hr {
   margin-bottom: 1.5em; }
 
 ul, ol {
-  margin: 0 0 1.5em 3em;
+  margin: 0 0 1.5em 1.5em;
   padding: 0; }
 
 ul {
@@ -2279,7 +2279,7 @@ a {
     display: none; } }
 
 .site-main .comment-navigation, .site-main .posts-navigation, .site-main .post-navigation {
-  margin: 0 0 1.5em;
+  margin: 0 0 2em;
   overflow: hidden; }
 
 .comment-navigation .nav-previous, .posts-navigation .nav-previous, .post-navigation .nav-previous {
@@ -2353,6 +2353,7 @@ a {
 10.0 Widgets
 --------------------------------------------------------------*/
 #secondary {
+  margin-bottom: 1em;
   padding: 1em;
   word-wrap: break-word;
   background-color: black;
@@ -2464,6 +2465,13 @@ a {
 /*--------------------------------------------------------------
 10.3 Comments
 --------------------------------------------------------------*/
+#respond {
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #404040; }
+
 .comment-content a {
   word-wrap: break-word; }
 

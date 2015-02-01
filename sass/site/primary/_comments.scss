@@ -1,3 +1,11 @@
+#respond {
+	padding: 1em;
+	margin-bottom: 2em;
+	background-color: white;
+	background-color: rgba(255,255,255,.9);
+	color: $color__text-main;
+}
+
 .comment-content a {
 	word-wrap: break-word;
 }
