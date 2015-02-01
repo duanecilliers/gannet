@@ -1973,7 +1973,8 @@ big {
   font-size: 125%; }
 
 .site-info {
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 1em; }
 
 /*--------------------------------------------------------------
 3.0 Layout
@@ -2396,15 +2397,19 @@ a {
   clear: both;
   margin: 0 0 1.5em; }
 
-.comments-link {
+.cat-links, .tags-links, .comments-link {
   display: block; }
 
-.hentry .posted-on:before, .entry-footer .comments-link:before {
+.hentry .posted-on:before, .entry-footer .cat-links:before, .entry-footer .tags-links:before, .entry-footer .comments-link:before {
   font-family: FontAwesome;
   color: #a09f9f;
   float: left;
   margin-right: 5px; }
 
+.entry-footer .cat-links:before {
+  content: "\F0E8"; }
+.entry-footer .tags-links:before {
+  content: "\F02C"; }
 .entry-footer .comments-link:before {
   content: "\f075";
   color: #d64760; }

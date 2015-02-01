@@ -42,11 +42,15 @@
 	margin: 0 0 1.5em;
 }
 
+.cat-links,
+.tags-links,
 .comments-link {
 	display: block;
 }
 
 .hentry .posted-on,
+.entry-footer .cat-links,
+.entry-footer .tags-links,
 .entry-footer .comments-link {
 	&:before {
 		font-family: FontAwesome;
@@ -57,6 +61,12 @@
 }
 
 .entry-footer {
+	.cat-links:before {
+		content: "\F0E8";
+	}
+	.tags-links:before {
+		content: "\F02C";
+	}
 	.comments-link:before {
 		content: "\f075";
 		color: $color__link-dark;
