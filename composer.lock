@@ -1,0 +1,58 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "7bebc7df6766f58cd49c4294e3a9115a",
+    "packages": [
+        {
+            "name": "devinsays/customizer-library",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/devinsays/customizer-library.git",
+                "reference": "7ae2a41c54593741beb0c2a78fdf2b97928c96a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/devinsays/customizer-library/zipball/7ae2a41c54593741beb0c2a78fdf2b97928c96a8",
+                "reference": "7ae2a41c54593741beb0c2a78fdf2b97928c96a8",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "customizer-library.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Devin Price",
+                    "email": "devin@wptheming.com",
+                    "homepage": "http://wptheming.com"
+                }
+            ],
+            "description": "Customizer Library - A helpful library for working with the WordPress customizer.",
+            "homepage": "https://github.com/devinsays/customizer-library",
+            "keywords": [
+                "customizer",
+                "wordpress"
+            ],
+            "abandoned": true,
+            "time": "2015-02-08 21:34:46"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
