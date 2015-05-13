@@ -178,6 +178,34 @@ function gannet_customize_options() {
   );
 
   /**
+   * Styling
+   */
+  $section = 'gannet-styling';
+
+  $sections[] = array(
+    'id'          => $section,
+    'title'       => __( 'Styling Options', 'gannet' ),
+    'priority'    => '45'
+  );
+
+  $options['gannet-upsell-two'] = array(
+    'id'          => 'gannet-upsell-three',
+    'label'       => __( 'Skin', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'upsell',
+  );
+
+  $options['gannet-custom-css'] = array(
+    'id'          => 'gannet-custom-css',
+    'label'       => __( 'Custom CSS', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'textarea',
+    'default'     => __( '', 'gannet'),
+    'description' => __( 'Add custom CSS to your theme', 'gannet' )
+  );
+
+
+  /**
    * Typography
    */
   $section = 'typography';
