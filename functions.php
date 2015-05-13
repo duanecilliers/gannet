@@ -149,7 +149,7 @@ require get_template_directory() . '/inc/extras.php';
  *
  * @link https://github.com/devinsays/customizer-library Customizer Library
  */
-require get_template_directory() . '/inc/customizer-library/customizer-library.php';
+require get_template_directory() . '/vendor/devinsays/customizer-library/customizer-library.php';
 
 /**
  * Customizer additions.
