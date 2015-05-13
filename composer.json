@@ -1,0 +1,10 @@
+{
+    "name": "duane/gannet",
+    "authors": [
+        {
+            "name": "Duane Cilliers",
+            "email": "duanecilliers@gmail.com"
+        }
+    ],
+    "require": {}
+}
