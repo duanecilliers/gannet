@@ -57,11 +57,11 @@ function gannet_customize_options() {
   );
 
   $options['favicon'] = array(
-    'id'      => 'gannet-favicon',
-    'label'   => __( 'Favicon', 'gannet' ),
-    'section' => $section,
-    'type'    => 'image',
-    'default' => '',
+    'id'          => 'gannet-favicon',
+    'label'       => __( 'Favicon', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'image',
+    'default'     => '',
   );
 
   /**
@@ -72,16 +72,16 @@ function gannet_customize_options() {
   $sections[] = array(
     'id'          => $section,
     'title'       => __( 'Logo', 'gannet' ),
-    'priority'    => '40',
+    'priority'    => '30',
     'description' => __( 'Add a logo to your website -- size recommendation --', 'gannet' )
   );
 
   $options['gannet-logo'] = array(
-    'id'      => 'gannet-logo',
-    'label'   => __( 'Logo', 'gannet' ),
-    'section' => $section,
-    'type'    => 'image',
-    'default' => '',
+    'id'          => 'gannet-logo',
+    'label'       => __( 'Logo', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'image',
+    'default'     => '',
   );
 
   /**
@@ -90,50 +90,92 @@ function gannet_customize_options() {
   $section = 'gannet-layout';
 
   $sections[] = array(
-        'id'        => $section,
-        'title'     => __( 'Layout Options', 'gannet' ),
-        'priority'  => '40'
-    );
+    'id'          => $section,
+    'title'       => __( 'Layout Options', 'gannet' ),
+    'priority'    => '35'
+  );
 
-    // Upsell Button One
-    $options['gannet-upsell-one'] = array(
-        'id'      => 'gannet-upsell-one',
-        'label'   => __( 'Site Layout', 'gannet' ),
-        'section' => $section,
-        'type'    => 'upsell',
-    );
+  $options['gannet-upsell-one'] = array(
+    'id'          => 'gannet-upsell-one',
+    'label'       => __( 'Site Layout', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'upsell',
+  );
 
-    // Upsell Button Two
-    $options['gannet-upsell-two'] = array(
-        'id'      => 'gannet-upsell-two',
-        'label'   => __( 'Header Layout', 'gannet' ),
-        'section' => $section,
-        'type'    => 'upsell',
-    );
+  $options['gannet-upsell-two'] = array(
+    'id'          => 'gannet-upsell-two',
+    'label'       => __( 'Header Layout', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'upsell',
+  );
 
-    $options['gannet-header-search'] = array(
-        'id'      => 'gannet-header-search',
-        'label'   => __( 'Show Search', 'gannet' ),
-        'section' => $section,
-        'type'    => 'checkbox',
-        'default' => 1,
-    );
-    $options['gannet-sticky-header'] = array(
-        'id'          => 'gannet-sticky-header',
-        'label'       => __( 'Sticky Header', 'gannet' ),
-        'section'     => $section,
-        'type'        => 'checkbox',
-        'description' => __( 'Make the main navigation stick to the top of the browser window', 'gannet' ),
-        'default'     => 0,
-    );
-    $options['gannet-show-header-top-bar'] = array(
-        'id'          => 'gannet-show-header-top-bar',
-        'label'       => __( 'Show Top Bar', 'gannet' ),
-        'section'     => $section,
-        'type'        => 'checkbox',
-        'description' => __( 'Show/hide the top bar in the header', 'gannet' ),
-        'default'     => 1,
-    );
+  $options['gannet-header-search'] = array(
+    'id'          => 'gannet-header-search',
+    'label'       => __( 'Show Search', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'checkbox',
+    'default'     => 1,
+  );
+
+  $options['gannet-sticky-header'] = array(
+    'id'          => 'gannet-sticky-header',
+    'label'       => __( 'Sticky Header', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'checkbox',
+    'description' => __( 'Make the main navigation stick to the top of the browser window', 'gannet' ),
+    'default'     => 0,
+  );
+
+  $options['gannet-show-header-top-bar'] = array(
+    'id'          => 'gannet-show-header-top-bar',
+    'label'       => __( 'Show Top Bar', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'checkbox',
+    'description' => __( 'Show/hide the top bar in the header', 'gannet' ),
+    'default'     => 1,
+  );
+
+  /**
+   * Slider
+   */
+  $section = 'gannet-slider';
+
+  $sections[] = array(
+    'id'          => $section,
+    'title'       => __( 'Slider Options', 'gannet' ),
+    'priority'    => '35'
+  );
+
+  $choices = array(
+    'gannet-slider-default' => 'Default Slider',
+    'gannet-meta-slider'    => 'Meta Slider',
+    'gannet-no-slider'      => 'None'
+  );
+
+  $options['gannet-slider-type'] = array(
+    'id'          => 'gannet-slider-type',
+    'label'       => __( 'Choose a Slider', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'select',
+    'choices'     => $choices,
+    'default'     => 'gannet-slider-default'
+  );
+
+  $options['gannet-slider-cats'] = array(
+    'id'          => 'gannet-slider-cats',
+    'label'       => __( 'Slider Categories', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'text',
+    'description' => __( 'Enter the ID\'s of the post categories you want to display in the slider. Eg: "13,17,19" (no spaces and only comma\'s)', 'gannet' )
+  );
+
+  $options['gannet-meta-slider-shortcode'] = array(
+    'id'          => 'gannet-meta-slider-shortcode',
+    'label'       => __( 'Slider Shortcode', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'text',
+    'description' => __( 'Enter the shortcode provided by meta slider.', 'gannet' )
+  );
 
   /**
    * Typography
