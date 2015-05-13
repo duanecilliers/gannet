@@ -188,7 +188,7 @@ function gannet_customize_options() {
     'priority'    => '45'
   );
 
-  $options['gannet-upsell-two'] = array(
+  $options['gannet-upsell-three'] = array(
     'id'          => 'gannet-upsell-three',
     'label'       => __( 'Skin', 'gannet' ),
     'section'     => $section,
@@ -204,6 +204,38 @@ function gannet_customize_options() {
     'description' => __( 'Add custom CSS to your theme', 'gannet' )
   );
 
+  /**
+   * Colors
+   */
+  $section = 'colors';
+
+  $options['gannet-primary-color'] = array(
+    'id'          => 'gannet-primary-color',
+    'label'       => __( 'Primary Color', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'color'
+  );
+
+  $options['gannet-secondary-color'] = array(
+    'id'          => 'gannet-secondary-color',
+    'label'       => __( 'Secondary Color', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'color'
+  );
+
+  $options['gannet-headings-color'] = array(
+    'id'          => 'gannet-headings-color',
+    'label'       => __( 'Headings Font Color', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'color'
+  );
+
+  $options['gannet-body-color'] = array(
+    'id'          => 'gannet-body-color',
+    'label'       => __( 'Body Font Color', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'color'
+  );
 
   /**
    * Typography
@@ -214,24 +246,174 @@ function gannet_customize_options() {
   $sections[] = array(
     'id' => $section,
     'title' => __( 'Typography', 'gannet' ),
-    'priority' => '80'
+    'priority' => '45'
   );
 
-  $options['primary-font'] = array(
-    'id' => 'primary-font',
-    'label'   => __( 'Primary Font', 'gannet' ),
+  $options['gannet-headings-font'] = array(
+    'id' => 'gannet-headings-font',
+    'label'   => __( 'Headings Font', 'gannet' ),
     'section' => $section,
     'type'    => 'select',
     'choices' => $font_choices,
     'default' => 'Quattrocento'
   );
-  $options['secondary-font'] = array(
-    'id' => 'secondary-font',
-    'label'   => __( 'Secondary Font', 'gannet' ),
+
+  $options['gannet-body-font'] = array(
+    'id' => 'gannet-body-font',
+    'label'   => __( 'Body Font', 'gannet' ),
     'section' => $section,
     'type'    => 'select',
     'choices' => $font_choices,
     'default' => 'Fanwood Text'
+  );
+
+  /**
+   * Portfolio
+   */
+  $section = 'gannet-portfolio';
+
+  $sections[] = array(
+    'id'          => $section,
+    'title'       => __( 'Portfolio Options', 'gannet' ),
+    'priority'    => '60'
+  );
+
+  $options['gannet-portfolio-title'] = array(
+    'id'          => 'gannet-portfolio-title',
+    'label'       => __( 'Portfolio Page Title', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'text',
+    'default'     => 'Portfolio'
+  );
+
+  $options['gannet-portfolio-cats'] = array(
+    'id' => 'gannet-portfolio-cats',
+    'label'   => __( 'Exclude Portfolio Categories', 'gannet' ),
+    'section' => $section,
+    'type'    => 'text',
+    'description' => __( 'Enter the ID\'s of the post categories you\'d like to EXCLUDE from the Portfolio, enter only the ID\'s with a minus sign (-) before them, separated by a comma (,)<br />Eg: "-13, -17, -19"<br />If you enter the ID\'s without the minus then it\'ll show ONLY posts in those categories.', 'gannet' )
+  );
+
+  $options['gannet-upsell-four'] = array(
+    'id'          => 'gannet-upsell-four',
+    'label'       => __( 'Portfolio Layout', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'upsell',
+  );
+
+  $options['gannet-upsell-five'] = array(
+    'id'          => 'gannet-upsell-five',
+    'label'       => __( 'Enable Infinite Scrolling', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'upsell',
+  );
+
+  /**
+   * Blog
+   */
+  $section = 'gannet-blog';
+
+  $sections[] = array(
+    'id'          => $section,
+    'title'       => __( 'Blog Options', 'gannet' ),
+    'priority'    => '60'
+  );
+
+  $options['gannet-blog-title'] = array(
+    'id'          => 'gannet-blog-title',
+    'label'       => __( 'Blog Page Title', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'text',
+    'default'     => 'Blog'
+  );
+
+  $options['gannet-blog-cats'] = array(
+    'id' => 'gannet-blog-cats',
+    'label'   => __( 'Exclude Blog Categories', 'gannet' ),
+    'section' => $section,
+    'type'    => 'text',
+    'description' => __( 'Enter the ID\'s of the post categories you\'d like to EXCLUDE from the Blog, enter only the ID\'s with a minus sign (-) before them, separated by a comma (,)<br />Eg: "-13, -17, -19"<br />If you enter the ID\'s without the minus then it\'ll show ONLY posts in those categories.', 'gannet' )
+  );
+
+  $options['gannet-upsell-six'] = array(
+    'id'          => 'gannet-upsell-six',
+    'label'       => __( 'Blog Layout', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'upsell',
+  );
+
+  $options['gannet-upsell-seven'] = array(
+    'id'          => 'gannet-upsell-seven',
+    'label'       => __( 'Enable Infinite Scrolling', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'upsell',
+  );
+
+  /**
+   * Website Copy
+   */
+  $section = 'gannet-copy';
+
+  $sections[] = array(
+    'id'          => $section,
+    'title'       => __( 'Website Copy', 'gannet' ),
+    'priority'    => '80'
+  );
+
+  $options['gannet-header-info'] = array(
+    'id'          => 'gannet-header-info',
+    'label'       => __( 'Header Info Text', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'text',
+    'default'     => 'Blog'
+  );
+
+  $options['gannet-upsell-eight'] = array(
+    'id'          => 'gannet-upsell-eight',
+    'label'       => __( 'Footer Copyright Text', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'upsell',
+  );
+
+  $options['gannet-404-heading'] = array(
+    'id'          => 'gannet-404-heading',
+    'label'       => __( '404 Error Page Heading', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'text'
+  );
+
+  $options['gannet-404-message'] = array(
+    'id'          => 'gannet-404-message',
+    'label'       => __( '404 Error Page Message', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'textarea'
+  );
+
+  $options['gannet-no-search-results'] = array(
+    'id'          => 'gannet-no-search-results',
+    'label'       => __( 'No Search Results Message', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'textarea',
+    'default'     => __( 'Enter the default text for when no search results are found', 'gannet' )
+  );
+
+  /**
+   * Social Settings
+   */
+  $section = 'gannet-social';
+
+  $sections[] = array(
+    'id'          => $section,
+    'title'       => __( 'Social Links', 'gannet' ),
+    'priority'    => '80'
+  );
+
+  // Upsell Button Four
+  $options['gannet-upsell-nine'] = array(
+    'id'          => 'gannet-upsell-nine',
+    'label'       => __( 'Add Social Links', 'gannet' ),
+    'section'     => $section,
+    'type'        => 'upsell',
   );
 
   // Adds the sections to the $options array
