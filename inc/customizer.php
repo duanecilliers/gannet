@@ -37,25 +37,16 @@ function gannet_customize_register( $wp_customize ) {
    * - Header Logo
    */
 
-  Kirki::add_panel( 'header_panel', array(
+  Kirki::add_section( 'logos', array(
     'priority'    => 70,
-    'title'       => __( 'Header', 'gannet' )
+    'title'       => __( 'Logos', 'gannet' )
   ) );
-
-  Kirki::add_section( 'logo', array(
-    'priority'    => 70,
-    'title'       => __( 'Header Logo', 'gannet' ),
-    'panel'       => 'header_panel'
-  ) );
-
-  // Tweak "Header Image" section
-  $wp_customize->get_section( 'header_image' )->panel = 'header_panel';
 
   Kirki::add_field( 'gannet_config', array(
     'settings'    => 'logo',
     'label'       => __( 'Upload Your Logo', 'gannet' ),
     'description' => __( 'We recommend a maximum logo size of 260 x 80 pixels', 'gannet' ),
-    'section'     => 'logo',
+    'section'     => 'logos',
     'type'        => 'upload'
   ) );
 
@@ -63,7 +54,7 @@ function gannet_customize_register( $wp_customize ) {
     'settings'    => 'logo_retina',
     'label'       => __( 'Upload Your Retina Logo', 'gannet' ),
     'description' => __( 'The retina logo must be double the main logo resolution, so at our recommendation it would be 520 x 160 pixels', 'gannet' ),
-    'section'     => 'logo',
+    'section'     => 'logos',
     'type'        => 'upload'
   ) );
 
@@ -216,8 +207,18 @@ function gannet_customize_register( $wp_customize ) {
 
   Kirki::add_section( 'layout', array(
     'priority'    => 90,
-    'title'       => __( 'Layout', 'gannet' ),
+    'title'       => __( 'Layout & Design', 'gannet' ),
   ) );
+
+  // Move Background Image control into Layout section & remove Background Image section
+  $wp_customize->get_control( 'background_image' )->section = 'layout';
+  $wp_customize->get_control( 'background_image' )->priority = 20;
+  $wp_customize->remove_section( 'background_image' );
+
+  // Move Header Image control into Layout section & remove Header Image section
+  $wp_customize->get_control( 'header_image' )->section = 'layout';
+  $wp_customize->get_control( 'header_image' )->priority = 20;
+  $wp_customize->remove_section( 'header_image' );
 
   Kirki::add_field( 'gannet_config', array(
     'type'        => 'custom',
@@ -242,6 +243,7 @@ function gannet_customize_register( $wp_customize ) {
     'description' => __( 'Enable search functionality', 'gannet' ),
     'help'        => __( 'Displays/removes search icon in navigation and footer.', 'gannet' ),
     'section'     => 'layout',
+    'priority'    => 20,
     'default'     => '1',
     'choices'     => array(
       'on'  => __( 'On', 'gannet' ),
