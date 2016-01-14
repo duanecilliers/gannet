@@ -73,9 +73,8 @@ function gannet_customize_register( $wp_customize ) {
   // Remove Header Text color control
   $wp_customize->remove_control( 'header_textcolor' );
 
-  // Re-position Background Color control and add description
-  $wp_customize->get_control( 'background_color' )->priority = 30;
-  $wp_customize->get_control( 'background_color' )->description = 'Choose a page body background color.';
+  // Remove Background Color Control
+  $wp_customize->remove_control( 'background_color' );
 
   Kirki::add_field( 'gannet_config', array(
     'type'        => 'custom',
@@ -96,6 +95,32 @@ function gannet_customize_register( $wp_customize ) {
   ) );
 
   /**
+   * Background Color
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'color',
+    'label'       => __( 'Background Color', 'gannet' ),
+    'description' => __( 'Choose a background accent color.', 'gannet' ),
+    'settings'    => 'background_color',
+    'section'     => 'colors',
+    'default'     => '#f9f9f9',
+    'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+        'element'  => 'body',
+        'function' => 'css',
+        'property' => 'background-color'
+      )
+    ),
+    'output'      => array(
+      array(
+        'element'  => 'body',
+        'property' => 'background-color'
+      )
+    )
+  ) );
+
+  /**
    * Primary Color
    */
   Kirki::add_field( 'gannet_config', array(
@@ -105,7 +130,6 @@ function gannet_customize_register( $wp_customize ) {
     'settings'    => 'primary_color',
     'section'     => 'colors',
     'default'     => '#7bcaf7',
-    'priority'    => 40,
     'transport'   => 'postMessage',
     'js_vars'     => array(
       array(
@@ -122,6 +146,9 @@ function gannet_customize_register( $wp_customize ) {
     )
   ) );
 
+  /**
+   * Secondary Color
+   */
   Kirki::add_field( 'gannet_config', array(
     'type'        => 'color',
     'label'       => __( 'Secondary Color', 'gannet' ),
@@ -129,7 +156,6 @@ function gannet_customize_register( $wp_customize ) {
     'settings'    => 'secondary_color',
     'section'     => 'colors',
     'default'     => '#f0b86f',
-    'priority'    => 40
   ) );
 
   Kirki::add_field( 'gannet_config', array(
@@ -139,7 +165,6 @@ function gannet_customize_register( $wp_customize ) {
     'settings'    => 'heading_text_color',
     'section'     => 'colors',
     'default'     => '#292929',
-    'priority'    => 40
   ) );
 
   Kirki::add_field( 'gannet_config', array(
@@ -149,7 +174,6 @@ function gannet_customize_register( $wp_customize ) {
     'settings'    => 'body_text_color',
     'section'     => 'colors',
     'default'     => '#292929',
-    'priority'    => 40
   ) );
 
   // ddd($wp_customize);
