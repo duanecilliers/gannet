@@ -236,7 +236,7 @@ function gannet_customize_register( $wp_customize ) {
     'default'     => gannet_upsell( __( 'This feature is only available in the premium version', 'gannet' ) )
   ) );
 
-  Kirki::add_field( '', array(
+  Kirki::add_field( 'gannet_config', array(
     'type'        => 'switch',
     'settings'    => 'show_search',
     'label'       => __( 'Show Search', 'gannet' ),
@@ -249,6 +249,250 @@ function gannet_customize_register( $wp_customize ) {
       'on'  => __( 'On', 'gannet' ),
       'off' => __( 'Off', 'gannet' ),
     ),
+  ) );
+
+  /**
+   * Typography
+   */
+
+  Kirki::add_panel( 'typography_panel', array(
+    'priority'    => 90,
+    'title'       => __( 'Typography', 'gannet' ),
+  ) );
+
+  /**
+   * Heading Type
+   */
+
+  Kirki::add_section( 'heading_type', array(
+    'title'       => __( 'Headings', 'gannet' ),
+    'panel'       => 'typography_panel'
+  ) );
+
+  Kirki::add_field( 'gannet_config', array(
+    'type'     => 'select',
+    'settings' => 'heading_type_font_family',
+    'label'    => __( 'Font Family', 'gannet' ),
+    'section'  => 'heading_type',
+    'default'  => 'Roboto',
+    'priority' => 20,
+    'choices'  => Kirki_Fonts::get_font_choices(),
+    'output'   => array(
+      'element'  => 'body',
+      'property' => 'font-family',
+    ),
+  ) );
+
+  Kirki::add_field( 'gannet_config', array(
+    'type'     => 'slider',
+    'settings' => 'heading_type_font_weight',
+    'label'    => __( 'Font Weight', 'gannet' ),
+    'section'  => 'heading_type',
+    'default'  => 300,
+    'priority' => 24,
+    'choices'  => array(
+      'min'  => 100,
+      'max'  => 900,
+      'step' => 100,
+    ),
+    'output'   => array(
+      'element'  => 'h1, h2, h3, h4, h5, h6',
+      'property' => 'font-weight',
+    ),
+    'transport' => 'postMessage',
+    'js_vars'   => array(
+      array(
+          'element'  => 'h1, h2, h3, h4, h5, h6',
+          'function' => 'css',
+          'property' => 'font-weight'
+      ),
+    )
+  ) );
+
+  /**
+   * H1 Font Size
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'      => 'slider',
+    'settings'  => 'heading_type_h1_font_size',
+    'label'     => __( 'H1 Font Size', 'gannet' ),
+    'section'   => 'heading_type',
+    'default'   => 40,
+    'priority'  => 25,
+    'choices'   => array(
+      'min'   => 22,
+      'max'   => 60,
+      'step'  => 1,
+    ),
+    'output' => array(
+      'element'  => 'h1',
+      'property' => 'font-size',
+      'units'    => 'px',
+    ),
+    'transport' => 'postMessage',
+    'js_vars'   => array(
+      array(
+          'element'  => 'h1',
+          'function' => 'css',
+          'property' => 'font-size',
+          'units'    => 'px'
+      ),
+    )
+  ) );
+
+  /**
+   * H2 Font Size
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'      => 'slider',
+    'settings'  => 'heading_type_h2_font_size',
+    'label'     => __( 'H2 Font Size', 'gannet' ),
+    'section'   => 'heading_type',
+    'default'   => 34,
+    'priority'  => 25,
+    'choices'   => array(
+      'min'   => 20,
+      'max'   => 50,
+      'step'  => 1,
+    ),
+    'output' => array(
+      'element'  => 'h2',
+      'property' => 'font-size',
+      'units'    => 'px',
+    ),
+    'transport' => 'postMessage',
+    'js_vars'   => array(
+      array(
+          'element'  => 'h2',
+          'function' => 'css',
+          'property' => 'font-size',
+          'units'    => 'px'
+      ),
+    )
+  ) );
+
+  /**
+   * H3 Font Size
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'      => 'slider',
+    'settings'  => 'heading_type_h3_font_size',
+    'label'     => __( 'H3 Font Size', 'gannet' ),
+    'section'   => 'heading_type',
+    'default'   => 22,
+    'priority'  => 25,
+    'choices'   => array(
+      'min'   => 26,
+      'max'   => 48,
+      'step'  => 1,
+    ),
+    'output' => array(
+      'element'  => 'h3',
+      'property' => 'font-size',
+      'units'    => 'px',
+    ),
+    'transport' => 'postMessage',
+    'js_vars'   => array(
+      array(
+          'element'  => 'h3',
+          'function' => 'css',
+          'property' => 'font-size',
+          'units'    => 'px'
+      ),
+    )
+  ) );
+
+  /**
+   * H4 Font Size
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'      => 'slider',
+    'settings'  => 'heading_type_h4_font_size',
+    'label'     => __( 'H4 Font Size', 'gannet' ),
+    'section'   => 'heading_type',
+    'default'   => 22,
+    'priority'  => 25,
+    'choices'   => array(
+      'min'   => 16,
+      'max'   => 40,
+      'step'  => 1,
+    ),
+    'output' => array(
+      'element'  => 'h4',
+      'property' => 'font-size',
+      'units'    => 'px',
+    ),
+    'transport' => 'postMessage',
+    'js_vars'   => array(
+      array(
+          'element'  => 'h4',
+          'function' => 'css',
+          'property' => 'font-size',
+          'units'    => 'px'
+      ),
+    )
+  ) );
+
+  /**
+   * H5 Font Size
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'      => 'slider',
+    'settings'  => 'heading_type_h5_font_size',
+    'label'     => __( 'H5 Font Size', 'gannet' ),
+    'section'   => 'heading_type',
+    'default'   => 20,
+    'priority'  => 25,
+    'choices'   => array(
+      'min'   => 14,
+      'max'   => 40,
+      'step'  => 1,
+    ),
+    'output' => array(
+      'element'  => 'h5',
+      'property' => 'font-size',
+      'units'    => 'px',
+    ),
+    'transport' => 'postMessage',
+    'js_vars'   => array(
+      array(
+          'element'  => 'h5',
+          'function' => 'css',
+          'property' => 'font-size',
+          'units'    => 'px'
+      ),
+    )
+  ) );
+
+  /**
+   * H6 Font Size
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'      => 'slider',
+    'settings'  => 'heading_type_h6_font_size',
+    'label'     => __( 'H6 Font Size', 'gannet' ),
+    'section'   => 'heading_type',
+    'default'   => 18,
+    'priority'  => 25,
+    'choices'   => array(
+      'min'   => 12,
+      'max'   => 30,
+      'step'  => 1,
+    ),
+    'output' => array(
+      'element'  => 'h6',
+      'property' => 'font-size',
+      'units'    => 'px',
+    ),
+    'transport' => 'postMessage',
+    'js_vars'   => array(
+      array(
+          'element'  => 'h6',
+          'function' => 'css',
+          'property' => 'font-size',
+          'units'    => 'px'
+      ),
+    )
   ) );
 
   // ddd($wp_customize);
