@@ -210,6 +210,45 @@ function gannet_customize_register( $wp_customize ) {
     )
   ) );
 
+  /**
+   * Layout Section
+   */
+
+  Kirki::add_section( 'layout', array(
+    'priority'    => 90,
+    'title'       => __( 'Layout', 'gannet' ),
+  ) );
+
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'custom',
+    'label'       => __( 'Site Layout', 'gannet' ),
+    'settings'    => 'site_layout_upsell',
+    'section'     => 'layout',
+    'default'     => gannet_upsell( __( 'This feature is only available in the premium version', 'gannet' ) )
+  ) );
+
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'custom',
+    'label'       => __( 'Header Layout', 'gannet' ),
+    'settings'    => 'header_layout_upsell',
+    'section'     => 'layout',
+    'default'     => gannet_upsell( __( 'This feature is only available in the premium version', 'gannet' ) )
+  ) );
+
+  Kirki::add_field( '', array(
+    'type'        => 'switch',
+    'settings'    => 'show_search',
+    'label'       => __( 'Show Search', 'gannet' ),
+    'description' => __( 'Enable search functionality', 'gannet' ),
+    'help'        => __( 'Displays/removes search icon in navigation and footer.', 'gannet' ),
+    'section'     => 'layout',
+    'default'     => '1',
+    'choices'     => array(
+      'on'  => __( 'On', 'gannet' ),
+      'off' => __( 'Off', 'gannet' ),
+    ),
+  ) );
+
   // ddd($wp_customize);
 
 }
