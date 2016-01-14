@@ -604,6 +604,20 @@ a {
 # Content
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
+## Branding
+--------------------------------------------------------------*/
+.site-branding .site-title {
+  margin-bottom: 0; }
+  .site-branding .site-title a {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 400;
+    letter-spacing: -1px; }
+.site-branding .site-description {
+  margin-top: 0;
+  font-style: italic; }
+
+/*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
 .sticky {
