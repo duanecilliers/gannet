@@ -571,6 +571,7 @@ function gannet_inline_styles() {
       font-size: {$base_type_font_size};
       font-family: {$base_type_font_family};
       font-weight: {$base_type_font_weight};
+      border-top: 4px solid {$primary_color};
     }
     a {
       color: {$primary_color};
