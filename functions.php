@@ -129,7 +129,7 @@ add_action( 'wp_enqueue_scripts', 'gannet_scripts' );
 /**
  * Kirki Customizer toolkit
  */
-require get_template_directory() . '/vendor/kirki/kirki.php'
+require get_template_directory() . '/vendor/kirki/kirki.php';
 
 /**
  * Implement the Custom Header feature.
