@@ -165,6 +165,19 @@ function gannet_customize_register( $wp_customize ) {
     'settings'    => 'heading_text_color',
     'section'     => 'colors',
     'default'     => '#292929',
+    'js_vars'     => array(
+      array(
+        'element'  => 'h1, h2, h3, h4, h5, h6',
+        'function' => 'css',
+        'property' => 'color'
+      )
+    ),
+    'output'      => array(
+      array(
+        'element'  => 'h1, h2, h3, h4, h5, h6',
+        'property' => 'color'
+      )
+    )
   ) );
 
   Kirki::add_field( 'gannet_config', array(
@@ -174,6 +187,19 @@ function gannet_customize_register( $wp_customize ) {
     'settings'    => 'body_text_color',
     'section'     => 'colors',
     'default'     => '#292929',
+    'js_vars'     => array(
+      array(
+        'element'  => 'body',
+        'function' => 'css',
+        'property' => 'color'
+      )
+    ),
+    'output'      => array(
+      array(
+        'element'  => 'body',
+        'property' => 'color'
+      )
+    )
   ) );
 
   // ddd($wp_customize);
