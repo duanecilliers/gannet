@@ -110,12 +110,6 @@ function gannet_customize_register( $wp_customize ) {
         'function' => 'css',
         'property' => 'background-color'
       )
-    ),
-    'output'      => array(
-      array(
-        'element'  => 'body',
-        'property' => 'background-color'
-      )
     )
   ) );
 
@@ -134,12 +128,6 @@ function gannet_customize_register( $wp_customize ) {
       array(
         'element'  => 'a',
         'function' => 'css',
-        'property' => 'color'
-      )
-    ),
-    'output'      => array(
-      array(
-        'element'  => 'a',
         'property' => 'color'
       )
     )
@@ -170,12 +158,6 @@ function gannet_customize_register( $wp_customize ) {
         'function' => 'css',
         'property' => 'color'
       )
-    ),
-    'output'      => array(
-      array(
-        'element'  => 'h1, h2, h3, h4, h5, h6',
-        'property' => 'color'
-      )
     )
   ) );
 
@@ -190,12 +172,6 @@ function gannet_customize_register( $wp_customize ) {
       array(
         'element'  => 'body',
         'function' => 'css',
-        'property' => 'color'
-      )
-    ),
-    'output'      => array(
-      array(
-        'element'  => 'body',
         'property' => 'color'
       )
     )
@@ -274,13 +250,17 @@ function gannet_customize_register( $wp_customize ) {
     'settings' => 'heading_type_font_family',
     'label'    => __( 'Font Family', 'gannet' ),
     'section'  => 'heading_type',
-    'default'  => 'Roboto',
+    'default'  => 'Open Sans',
     'priority' => 20,
     'choices'  => Kirki_Fonts::get_font_choices(),
-    'output'   => array(
-      'element'  => 'body',
-      'property' => 'font-family',
-    ),
+    'transport' => 'postMessage',
+    'js_vars'   => array(
+      array(
+          'element'  => 'h1, h2, h3, h4, h5, h6',
+          'function' => 'css',
+          'property' => 'font-family'
+      ),
+    )
   ) );
 
   Kirki::add_field( 'gannet_config', array(
@@ -288,16 +268,12 @@ function gannet_customize_register( $wp_customize ) {
     'settings' => 'heading_type_font_weight',
     'label'    => __( 'Font Weight', 'gannet' ),
     'section'  => 'heading_type',
-    'default'  => 300,
+    'default'  => 600,
     'priority' => 24,
     'choices'  => array(
       'min'  => 100,
       'max'  => 900,
       'step' => 100,
-    ),
-    'output'   => array(
-      'element'  => 'h1, h2, h3, h4, h5, h6',
-      'property' => 'font-weight',
     ),
     'transport' => 'postMessage',
     'js_vars'   => array(
@@ -323,11 +299,6 @@ function gannet_customize_register( $wp_customize ) {
       'min'   => 22,
       'max'   => 60,
       'step'  => 1,
-    ),
-    'output' => array(
-      'element'  => 'h1',
-      'property' => 'font-size',
-      'units'    => 'px',
     ),
     'transport' => 'postMessage',
     'js_vars'   => array(
@@ -355,11 +326,6 @@ function gannet_customize_register( $wp_customize ) {
       'max'   => 50,
       'step'  => 1,
     ),
-    'output' => array(
-      'element'  => 'h2',
-      'property' => 'font-size',
-      'units'    => 'px',
-    ),
     'transport' => 'postMessage',
     'js_vars'   => array(
       array(
@@ -379,17 +345,12 @@ function gannet_customize_register( $wp_customize ) {
     'settings'  => 'heading_type_h3_font_size',
     'label'     => __( 'H3 Font Size', 'gannet' ),
     'section'   => 'heading_type',
-    'default'   => 22,
+    'default'   => 24,
     'priority'  => 25,
     'choices'   => array(
       'min'   => 26,
       'max'   => 48,
       'step'  => 1,
-    ),
-    'output' => array(
-      'element'  => 'h3',
-      'property' => 'font-size',
-      'units'    => 'px',
     ),
     'transport' => 'postMessage',
     'js_vars'   => array(
@@ -417,11 +378,6 @@ function gannet_customize_register( $wp_customize ) {
       'max'   => 40,
       'step'  => 1,
     ),
-    'output' => array(
-      'element'  => 'h4',
-      'property' => 'font-size',
-      'units'    => 'px',
-    ),
     'transport' => 'postMessage',
     'js_vars'   => array(
       array(
@@ -447,11 +403,6 @@ function gannet_customize_register( $wp_customize ) {
       'min'   => 14,
       'max'   => 40,
       'step'  => 1,
-    ),
-    'output' => array(
-      'element'  => 'h5',
-      'property' => 'font-size',
-      'units'    => 'px',
     ),
     'transport' => 'postMessage',
     'js_vars'   => array(
@@ -479,15 +430,85 @@ function gannet_customize_register( $wp_customize ) {
       'max'   => 30,
       'step'  => 1,
     ),
-    'output' => array(
-      'element'  => 'h6',
-      'property' => 'font-size',
-      'units'    => 'px',
-    ),
     'transport' => 'postMessage',
     'js_vars'   => array(
       array(
           'element'  => 'h6',
+          'function' => 'css',
+          'property' => 'font-size',
+          'units'    => 'px'
+      ),
+    )
+  ) );
+
+  /**
+   * Base Typography
+   */
+
+  Kirki::add_section( 'base_type', array(
+    'title'       => __( 'Base', 'gannet' ),
+    'panel'       => 'typography_panel'
+  ) );
+
+  Kirki::add_field( 'gannet_config', array(
+    'type'     => 'select',
+    'settings' => 'base_type_font_family',
+    'label'    => __( 'Font Family', 'gannet' ),
+    'section'  => 'base_type',
+    'default'  => 'Open Sans',
+    'priority' => 20,
+    'choices'  => Kirki_Fonts::get_font_choices(),
+    'transport' => 'postMessage',
+    'js_vars'   => array(
+      array(
+          'element'  => 'body',
+          'function' => 'css',
+          'property' => 'font-family'
+      ),
+    )
+  ) );
+
+  Kirki::add_field( 'gannet_config', array(
+    'type'     => 'slider',
+    'settings' => 'base_type_font_weight',
+    'label'    => __( 'Font Weight', 'gannet' ),
+    'section'  => 'base_type',
+    'default'  => 300,
+    'priority' => 24,
+    'choices'  => array(
+      'min'  => 100,
+      'max'  => 900,
+      'step' => 100,
+    ),
+    'transport' => 'postMessage',
+    'js_vars'   => array(
+      array(
+          'element'  => 'body',
+          'function' => 'css',
+          'property' => 'font-weight'
+      ),
+    )
+  ) );
+
+  /**
+   * Base Font Size
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'      => 'slider',
+    'settings'  => 'base_type_font_size',
+    'label'     => __( 'Base Font Size', 'gannet' ),
+    'section'   => 'base_type',
+    'default'   => 14,
+    'priority'  => 25,
+    'choices'   => array(
+      'min'   => 12,
+      'max'   => 30,
+      'step'  => 1,
+    ),
+    'transport' => 'postMessage',
+    'js_vars'   => array(
+      array(
+          'element'  => 'body',
           'function' => 'css',
           'property' => 'font-size',
           'units'    => 'px'
@@ -515,3 +536,70 @@ function gannet_customizer_controls() {
   wp_enqueue_style( 'gannet_customizer', get_template_directory_uri() . '/css/customizer.css', array(), '20150114' );
 }
 add_action( 'customize_controls_enqueue_scripts', 'gannet_customizer_controls', 100 );
+
+/**
+ * Add Customizer Inline Styles
+ */
+function gannet_inline_styles() {
+  // Colors
+  $background_color     = get_theme_mod( 'background_color', '#f9f9f9' );
+  $primary_color        = get_theme_mod( 'primary_color', '#7bcaf7' );
+  $secondary_color      = get_theme_mod( 'secondary_color', '#f0b86f' );
+  $heading_text_color   = get_theme_mod( 'heading_text_color', '#292929' );
+  $body_text_color      = get_theme_mod( 'body_text_color', '#292929' );
+
+  // Heading Type
+  $heading_type_font_family   = get_theme_mod( 'heading_type_font_family', 'Open Sans' );
+  $heading_type_font_weight   = get_theme_mod( 'heading_type_font_weight', 600 );
+  $heading_type_h1_font_size  = get_theme_mod( 'heading_type_h1_font_size', 40 );
+  $heading_type_h2_font_size  = get_theme_mod( 'heading_type_h2_font_size', 34 );
+  $heading_type_h3_font_size  = get_theme_mod( 'heading_type_h3_font_size', 24 );
+  $heading_type_h4_font_size  = get_theme_mod( 'heading_type_h4_font_size', 22 );
+  $heading_type_h5_font_size  = get_theme_mod( 'heading_type_h5_font_size', 20 );
+  $heading_type_h6_font_size  = get_theme_mod( 'heading_type_h6_font_size', 18 );
+
+  // Base Type
+  $base_type_font_family    = get_theme_mod( 'base_type_font_family', 'Open Sans' );
+  $base_type_font_weight    = get_theme_mod( 'base_type_font_weight', 300 );
+  $base_type_font_size      = get_theme_mod( 'base_type_font_size', 14 );
+
+
+  $custom_css = "
+    body {
+      background-color: {$background_color};
+      color: {$body_text_color};
+      font-size: {$base_type_font_size};
+      font-family: {$base_type_font_family};
+      font-weight: {$base_type_font_weight};
+    }
+    a {
+      color: {$primary_color};
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: {$heading_text_color};
+      font-family: {$heading_type_font_family};
+      font-weight: {$heading_type_font_weight};
+    }
+    h1 {
+      font-size: {$heading_type_h1_font_size}px;
+    }
+    h2 {
+      font-size: {$heading_type_h2_font_size}px;
+    }
+    h3 {
+      font-size: {$heading_type_h3_font_size}px;
+    }
+    h4 {
+      font-size: {$heading_type_h4_font_size}px;
+    }
+    h5 {
+      font-size: {$heading_type_h5_font_size}px;
+    }
+    h6 {
+      font-size: {$heading_type_h6_font_size}px;
+    }
+  ";
+
+  wp_add_inline_style( 'gannet-style', $custom_css );
+}
+add_action( 'wp_enqueue_scripts', 'gannet_inline_styles', 20 );
