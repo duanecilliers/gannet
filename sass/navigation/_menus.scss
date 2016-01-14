@@ -61,11 +61,19 @@
 
 		&:hover > a,
 		&.focus > a {
+
 		}
 	}
 	a {
+		font-weight: 500;
+		color: $color__text-main;
 		display: block;
 		text-decoration: none;
+
+		&:hover,
+		&:focus {
+			color: lighten($color__text-main, 10%);
+		}
 	}
 
 	.current_page_item > a,

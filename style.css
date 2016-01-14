@@ -468,8 +468,12 @@ a {
     .main-navigation li:last-child {
       margin-bottom: 0; }
   .main-navigation a {
+    font-weight: 500;
+    color: #292929;
     display: block;
     text-decoration: none; }
+    .main-navigation a:hover, .main-navigation a:focus {
+      color: #434343; }
 
 /* Small menu. */
 .menu-toggle,
