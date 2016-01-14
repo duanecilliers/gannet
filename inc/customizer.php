@@ -37,16 +37,64 @@ function gannet_customize_register( $wp_customize ) {
    * - Header Logo
    */
 
-  Kirki::add_section( 'logos', array(
+  Kirki::add_section( 'site_branding', array(
     'priority'    => 70,
-    'title'       => __( 'Logos', 'gannet' )
+    'title'       => __( 'Site Branding', 'gannet' )
+  ) );
+
+  Kirki::add_field( 'gannet_config', array(
+    'type'     => 'select',
+    'settings' => 'site_title_font_family',
+    'label'    => __( 'Site title Font Family', 'gannet' ),
+    'section'  => 'site_branding',
+    'default'  => 'Roboto Condensed',
+    'choices'  => Kirki_Fonts::get_font_choices(),
+    'output'   => array(
+      array(
+        'element'  => '.site-branding .site-title',
+        'function' => 'css',
+        'property' => 'font-family'
+      )
+    ),
+    'transport' => 'postMessage',
+    'js_vars'   => array(
+      array(
+          'element'  => '.site-branding .site-title',
+          'function' => 'css',
+          'property' => 'font-family'
+      ),
+    )
+  ) );
+
+   Kirki::add_field( 'gannet_config', array(
+    'type'     => 'select',
+    'settings' => 'site_description_font_family',
+    'label'    => __( 'Site Description Font Family', 'gannet' ),
+    'section'  => 'site_branding',
+    'default'  => 'Droid Serif',
+    'choices'  => Kirki_Fonts::get_font_choices(),
+    'output'   => array(
+      array(
+        'element'  => '.site-branding .site-description',
+        'function' => 'css',
+        'property' => 'font-family'
+      )
+    ),
+    'transport' => 'postMessage',
+    'js_vars'   => array(
+      array(
+          'element'  => '.site-branding .site-description',
+          'function' => 'css',
+          'property' => 'font-family'
+      ),
+    )
   ) );
 
   Kirki::add_field( 'gannet_config', array(
     'settings'    => 'logo',
     'label'       => __( 'Upload Your Logo', 'gannet' ),
     'description' => __( 'We recommend a maximum logo size of 260 x 80 pixels', 'gannet' ),
-    'section'     => 'logos',
+    'section'     => 'site_branding',
     'type'        => 'upload'
   ) );
 
@@ -54,7 +102,7 @@ function gannet_customize_register( $wp_customize ) {
     'settings'    => 'logo_retina',
     'label'       => __( 'Upload Your Retina Logo', 'gannet' ),
     'description' => __( 'The retina logo must be double the main logo resolution, so at our recommendation it would be 520 x 160 pixels', 'gannet' ),
-    'section'     => 'logos',
+    'section'     => 'site_branding',
     'type'        => 'upload'
   ) );
 
@@ -548,6 +596,9 @@ function gannet_inline_styles() {
   $heading_text_color   = get_theme_mod( 'heading_text_color', '#292929' );
   $body_text_color      = get_theme_mod( 'body_text_color', '#292929' );
 
+  $site_title_font_family       = get_theme_mod( 'site_title_font_family', 'Roboto Condensed' );
+  $site_description_font_family = get_theme_mod( 'site_description_font_family', 'Droid Serif' );
+
   // Heading Type
   $heading_type_font_family   = get_theme_mod( 'heading_type_font_family', 'Open Sans' );
   $heading_type_font_weight   = get_theme_mod( 'heading_type_font_weight', 600 );
@@ -571,6 +622,7 @@ function gannet_inline_styles() {
       font-size: {$base_type_font_size};
       font-family: {$base_type_font_family};
       font-weight: {$base_type_font_weight};
+      border-top: 4px solid {$primary_color};
     }
     a {
       color: {$primary_color};
@@ -597,6 +649,16 @@ function gannet_inline_styles() {
     }
     h6 {
       font-size: {$heading_type_h6_font_size}px;
+    }
+    .site-branding .site-title {
+      font-family: {$site_title_font_family};
+    }
+    .site-branding .site-title a {
+      color: {$body_text_color};
+    }
+    .site-branding .site-description {
+      color: {$primary_color};
+      font-family: {$site_description_font_family};
     }
   ";
 
