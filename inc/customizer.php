@@ -45,7 +45,6 @@ function gannet_customize_register( $wp_customize ) {
   Kirki::add_section( 'logo', array(
     'priority'    => 70,
     'title'       => __( 'Header Logo', 'gannet' ),
-    'description' => __( '<p class="customizer-section-intro">While you can crop images to your liking after clicking <strong>Add new image</strong, your theme recommends a maximum logo size of 260 x 80 pixels. The retina version is doulbe that resolution, so 520 x 160 pixels.</p>', 'gannet' ),
     'panel'       => 'header_panel'
   ) );
 
@@ -55,6 +54,15 @@ function gannet_customize_register( $wp_customize ) {
   Kirki::add_field( 'gannet_config', array(
     'settings'    => 'logo',
     'label'       => __( 'Upload Your Logo', 'gannet' ),
+    'description' => __( 'We recommend a maximum logo size of 260 x 80 pixels', 'gannet' ),
+    'section'     => 'logo',
+    'type'        => 'upload'
+  ) );
+
+  Kirki::add_field( 'gannet_config', array(
+    'settings'    => 'logo_retina',
+    'label'       => __( 'Upload Your Retina Logo', 'gannet' ),
+    'description' => __( 'The retina logo must be double the main logo resolution, so at our recommendation it would be 520 x 160 pixels', 'gannet' ),
     'section'     => 'logo',
     'type'        => 'upload'
   ) );
