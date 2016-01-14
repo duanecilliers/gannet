@@ -26,9 +26,6 @@ function gannet_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
-  // Kint::dump($GLOBALS, $_SERVER); // pass any number of parameters
-  // ddd($wp_customize);
-
   Kirki::add_config( 'gannet_config', array(
     'capability'  => 'edit_theme_options',
     'option_type' => 'theme_mod'
@@ -98,6 +95,9 @@ function gannet_customize_register( $wp_customize ) {
     'default'     => gannet_upsell( __( 'This feature is only available in the premium version', 'gannet' ) )
   ) );
 
+  /**
+   * Primary Color
+   */
   Kirki::add_field( 'gannet_config', array(
     'type'        => 'color',
     'label'       => __( 'Primary Color', 'gannet' ),
@@ -105,7 +105,21 @@ function gannet_customize_register( $wp_customize ) {
     'settings'    => 'primary_color',
     'section'     => 'colors',
     'default'     => '#7bcaf7',
-    'priority'    => 40
+    'priority'    => 40,
+    'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+        'element'  => 'a',
+        'function' => 'css',
+        'property' => 'color'
+      )
+    ),
+    'output'      => array(
+      array(
+        'element'  => 'a',
+        'property' => 'color'
+      )
+    )
   ) );
 
   Kirki::add_field( 'gannet_config', array(
