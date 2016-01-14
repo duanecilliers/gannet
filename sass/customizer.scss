@@ -1,0 +1,44 @@
+.control-section .accordion-section-content > li {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #D8D8D8;
+
+    &:first-child {
+        border: none;
+    }
+}
+
+.gannet-upsell {
+
+}
+.gannet-upsell-title {
+    font-weight: 600;
+}
+.gannet-upsell-btn {
+    background-color: #29a6e5;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    margin: 8px 0 0;
+    padding: 8px 20px 10px;
+    color: #ECECEC;
+}
+.gannet-upsell-btn:hover {
+    background-color: #266ee4;
+    color: #FFF;
+}
+.gannet-upsell-desc {
+    font-size: 12px;
+    padding: 4px 0 0;
+}
+
+.customize-control-description {
+    margin-top: -5px;
+}
+
+.customize-control-radio-image {
+    .image {
+        margin-top: 10px;
+    }
+}

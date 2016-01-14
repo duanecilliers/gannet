@@ -5,6 +5,17 @@
  * @package Gannet
  */
 
+function gannet_upsell( $label ) {
+  ob_start(); ?>
+    <div class="gannet-upsell">
+      <div class="gannet-upsell-title"><?php echo esc_html( $label ); ?></div>
+      <a href="<?php echo esc_url( 'http://app.sellwire.net/p/K3' ); ?>" target="_blank" class="gannet-upsell-btn"><?php _e( 'Buy Gannet Premium', 'gannet' ); ?></a>
+      <div class="gannet-upsell-desc"><?php echo __( 'See the <a href="' . admin_url( 'themes.php?page=premium_upgrade' ) . '" target="_blank">premium</a> features.', 'gannet' ) ?></div>
+    </div>
+  <?php
+  return ob_get_clean();
+}
+
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
  *
@@ -23,6 +34,12 @@ function gannet_customize_register( $wp_customize ) {
     'option_type' => 'theme_mod'
   ) );
 
+  /**
+   * Header Panel
+   * - Header Image
+   * - Header Logo
+   */
+
   Kirki::add_panel( 'header_panel', array(
     'priority'    => 70,
     'title'       => __( 'Header', 'gannet' )
@@ -35,9 +52,7 @@ function gannet_customize_register( $wp_customize ) {
     'panel'       => 'header_panel'
   ) );
 
-  /**
-   * Customise "Header Image" section
-   */
+  // Tweak "Header Image" section
   $wp_customize->get_section( 'header_image' )->panel = 'header_panel';
 
   Kirki::add_field( 'gannet_config', array(
@@ -46,6 +61,84 @@ function gannet_customize_register( $wp_customize ) {
     'section'     => 'logo',
     'type'        => 'upload'
   ) );
+
+  /**
+   * Colors Panel
+   * - Skin (Premium)
+   * - Palettes (premium)
+   * - Background Color
+   * - Primary Color
+   * - Secondary Color
+   * - Headings Text Color
+   * - Body Text Color
+   */
+
+  // Remove Header Text color control
+  $wp_customize->remove_control( 'header_textcolor' );
+
+  // Re-position Background Color control and add description
+  $wp_customize->get_control( 'background_color' )->priority = 30;
+  $wp_customize->get_control( 'background_color' )->description = 'Choose a page body background color.';
+
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'custom',
+    'label'       => __( 'Skin', 'gannet' ),
+    'description' => __( 'Choose between light or dark skins.', 'gannet' ),
+    'settings'    => 'skin_upsell',
+    'section'     => 'colors',
+    'default'     => gannet_upsell( __( 'This feature is only available in the premium version', 'gannet' ) )
+  ) );
+
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'custom',
+    'label'       => __( 'Palettes', 'gannet' ),
+    'description' => __( 'Choose between a set of carefully crafted pallettes.', 'gannet' ),
+    'settings'    => 'palettes_upsell',
+    'section'     => 'colors',
+    'default'     => gannet_upsell( __( 'This feature is only available in the premium version', 'gannet' ) )
+  ) );
+
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'color',
+    'label'       => __( 'Primary Color', 'gannet' ),
+    'description' => __( 'Choose a primary accent color.', 'gannet' ),
+    'settings'    => 'primary_color',
+    'section'     => 'colors',
+    'default'     => '#7bcaf7',
+    'priority'    => 40
+  ) );
+
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'color',
+    'label'       => __( 'Secondary Color', 'gannet' ),
+    'description' => __( 'Choose a secondary accent color.', 'gannet' ),
+    'settings'    => 'secondary_color',
+    'section'     => 'colors',
+    'default'     => '#f0b86f',
+    'priority'    => 40
+  ) );
+
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'color',
+    'label'       => __( 'Heading Text Color', 'gannet' ),
+    'description' => __( 'Choose a heading (h1 - h6) color.', 'gannet' ),
+    'settings'    => 'heading_text_color',
+    'section'     => 'colors',
+    'default'     => '#292929',
+    'priority'    => 40
+  ) );
+
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'color',
+    'label'       => __( 'Body Text Color', 'gannet' ),
+    'description' => __( 'Choose a body text color.', 'gannet' ),
+    'settings'    => 'body_text_color',
+    'section'     => 'colors',
+    'default'     => '#292929',
+    'priority'    => 40
+  ) );
+
+  // ddd($wp_customize);
 
 }
 add_action( 'customize_register', 'gannet_customize_register' );
@@ -57,3 +150,11 @@ function gannet_customize_preview_js() {
 	wp_enqueue_script( 'gannet_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
 }
 add_action( 'customize_preview_init', 'gannet_customize_preview_js' );
+
+/**
+ * Include CSS/JS to customise customizer controls
+ */
+function gannet_customizer_controls() {
+  wp_enqueue_style( 'gannet_customizer', get_template_directory_uri() . '/css/customizer.css', array(), '20150114' );
+}
+add_action( 'customize_controls_enqueue_scripts', 'gannet_customizer_controls', 100 );
