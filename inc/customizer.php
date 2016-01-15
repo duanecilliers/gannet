@@ -218,7 +218,7 @@ function gannet_customize_register( $wp_customize ) {
     'default'     => '#292929',
     'js_vars'     => array(
       array(
-        'element'  => 'body',
+        'element'  => 'body, .site-branding .site-title a',
         'function' => 'css',
         'property' => 'color'
       )
