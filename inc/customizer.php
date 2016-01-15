@@ -29,18 +29,104 @@ function gannet_kirki_init() {
    * - Header Logo
    */
 
-  Kirki::add_section( 'site_branding', array(
-    'priority'    => 70,
-    'title'       => __( 'Site Branding', 'gannet' )
+  /**
+   * Header Text or Logo
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'radio-buttonset',
+    'settings'    => 'header_brand',
+    'label'       => __( 'Show Header Text or Logo', 'gannet' ),
+    'description' => __( 'Enable search functionality', 'gannet' ),
+    'section'     => 'title_tagline',
+    'priority'    => 10,
+    'default'     => 'text',
+    'choices'     => array(
+      'text'  => __( 'Header Text', 'gannet' ),
+      'logo' => __( 'Logo', 'gannet' ),
+    ),
+  ) );
+
+  /**
+   * Site Title Color
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'color',
+    'label'       => __( 'Site Title Color', 'gannet' ),
+    'settings'    => 'site_title_color',
+    'section'     => 'title_tagline',
+    'default'     => '#292929',
+    'priority'    => 10,
+    'required'     => array(
+      array(
+        'setting'  => 'header_brand',
+        'operator' => '==',
+        'value'    => 'text'
+      )
+    ),
+    'output'   => array(
+      array(
+        'element'  => '.site-title a',
+        'property' => 'color'
+      )
+    ),
+    'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+        'element'  => '.site-title a',
+        'function' => 'css',
+        'property' => 'color'
+      )
+    )
+  ) );
+
+  /**
+   * Site Tagline Color
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'color',
+    'label'       => __( 'Site Tagline Color', 'gannet' ),
+    'settings'    => 'site_tagline_color',
+    'section'     => 'title_tagline',
+    'default'     => '#7cccf9',
+    'priority'    => 10,
+    'required'     => array(
+      array(
+        'setting'  => 'header_brand',
+        'operator' => '==',
+        'value'    => 'text'
+      )
+    ),
+    'output'   => array(
+      array(
+        'element'  => '.site-description',
+        'property' => 'color'
+      )
+    ),
+    'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+        'element'  => '.site-description',
+        'function' => 'css',
+        'property' => 'color'
+      )
+    )
   ) );
 
   Kirki::add_field( 'gannet_config', array(
     'type'     => 'select',
     'settings' => 'site_title_font_family',
     'label'    => __( 'Site title Font Family', 'gannet' ),
-    'section'  => 'site_branding',
+    'section'  => 'title_tagline',
     'default'  => 'Roboto Condensed',
+    'priority' => 20,
     'choices'  => Kirki_Fonts::get_font_choices(),
+    'required'     => array(
+      array(
+        'setting'  => 'header_brand',
+        'operator' => '==',
+        'value'    => 'text'
+      )
+    ),
     'output'   => array(
       array(
         'element'  => '.site-branding .site-title a',
@@ -61,9 +147,17 @@ function gannet_kirki_init() {
     'type'     => 'select',
     'settings' => 'site_description_font_family',
     'label'    => __( 'Site Description Font Family', 'gannet' ),
-    'section'  => 'site_branding',
+    'section'  => 'title_tagline',
     'default'  => 'Droid Serif',
+    'priority' => 20,
     'choices'  => Kirki_Fonts::get_font_choices(),
+    'required'     => array(
+      array(
+        'setting'  => 'header_brand',
+        'operator' => '==',
+        'value'    => 'text'
+      )
+    ),
     'output'   => array(
       array(
         'element'  => '.site-branding .site-description',
@@ -84,16 +178,32 @@ function gannet_kirki_init() {
     'settings'    => 'logo',
     'label'       => __( 'Upload Your Logo', 'gannet' ),
     'description' => __( 'We recommend a maximum logo size of 260 x 80 pixels', 'gannet' ),
-    'section'     => 'site_branding',
-    'type'        => 'upload'
+    'section'     => 'title_tagline',
+    'priority' => 20,
+    'type'        => 'upload',
+    'required'     => array(
+      array(
+        'setting'  => 'header_brand',
+        'operator' => '==',
+        'value'    => 'logo'
+      )
+    ),
   ) );
 
   Kirki::add_field( 'gannet_config', array(
     'settings'    => 'logo_retina',
     'label'       => __( 'Upload Your Retina Logo', 'gannet' ),
     'description' => __( 'The retina logo must be double the main logo resolution, so at our recommendation it would be 520 x 160 pixels', 'gannet' ),
-    'section'     => 'site_branding',
-    'type'        => 'upload'
+    'section'     => 'title_tagline',
+    'priority' => 20,
+    'type'        => 'upload',
+    'required'     => array(
+      array(
+        'setting'  => 'header_brand',
+        'operator' => '==',
+        'value'    => 'logo'
+      )
+    ),
   ) );
 
   /**
@@ -158,7 +268,7 @@ function gannet_kirki_init() {
     'transport'   => 'postMessage',
     'js_vars'     => array(
       array(
-        'element'  => 'a',
+        'element'  => 'a, .site-branding .site-description',
         'function' => 'css',
         'property' => 'color'
       )
@@ -202,7 +312,7 @@ function gannet_kirki_init() {
     'default'     => '#292929',
     'js_vars'     => array(
       array(
-        'element'  => 'body, .site-branding .site-title a',
+        'element'  => 'body',
         'function' => 'css',
         'property' => 'color'
       )
@@ -570,7 +680,15 @@ function gannet_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
   // Remove Header Text color control
+  $wp_customize->remove_control( 'display_header_text' );
   $wp_customize->remove_control( 'header_textcolor' );
+
+  // $wp_customize->get_control( 'display_header_text' )->priority = 10;
+
+  // $wp_customize->get_control( 'header_textcolor' )->label = __( 'Site Tagline Color', 'gannet' );
+  // $wp_customize->get_control( 'header_textcolor' )->section = 'title_tagline';
+  // $wp_customize->get_control( 'header_textcolor' )->priority = 15;
+  // $wp_customize->get_setting( 'header_textcolor' )->default = '7bcaf7';
 
   // Remove Background Color Control
   $wp_customize->remove_control( 'background_color' );
@@ -594,7 +712,7 @@ add_action( 'customize_register', 'gannet_customize_register', 100 );
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function gannet_customize_preview_js() {
-	wp_enqueue_script( 'gannet_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
+	wp_enqueue_script( 'gannet_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20150115', true );
 }
 add_action( 'customize_preview_init', 'gannet_customize_preview_js' );
 
@@ -622,18 +740,6 @@ function gannet_inline_styles() {
       background-color: {$background_color};
       color: {$body_text_color};
       border-top: 4px solid {$primary_color};
-    }
-    a {
-      color: {$primary_color};
-    }
-    h1, h2, h3, h4, h5, h6 {
-      color: {$heading_text_color};
-    }
-    .site-branding .site-title a {
-      color: {$body_text_color};
-    }
-    .site-branding .site-description {
-      color: {$primary_color};
     }
   ";
 
