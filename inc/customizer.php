@@ -16,15 +16,7 @@ function gannet_upsell( $label ) {
   return ob_get_clean();
 }
 
-/**
- * Add postMessage support for site title and description for the Theme Customizer.
- *
- * @param WP_Customize_Manager $wp_customize Theme Customizer object.
- */
-function gannet_customize_register( $wp_customize ) {
-	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+function gannet_kirki_init() {
 
   Kirki::add_config( 'gannet_config', array(
     'capability'  => 'edit_theme_options',
@@ -114,12 +106,6 @@ function gannet_customize_register( $wp_customize ) {
    * - Headings Text Color
    * - Body Text Color
    */
-
-  // Remove Header Text color control
-  $wp_customize->remove_control( 'header_textcolor' );
-
-  // Remove Background Color Control
-  $wp_customize->remove_control( 'background_color' );
 
   Kirki::add_field( 'gannet_config', array(
     'type'        => 'custom',
@@ -231,16 +217,6 @@ function gannet_customize_register( $wp_customize ) {
     'priority'    => 90,
     'title'       => __( 'Layout & Design', 'gannet' ),
   ) );
-
-  // Move Background Image control into Layout section & remove Background Image section
-  $wp_customize->get_control( 'background_image' )->section = 'layout';
-  $wp_customize->get_control( 'background_image' )->priority = 20;
-  $wp_customize->remove_section( 'background_image' );
-
-  // Move Header Image control into Layout section & remove Header Image section
-  $wp_customize->get_control( 'header_image' )->section = 'layout';
-  $wp_customize->get_control( 'header_image' )->priority = 20;
-  $wp_customize->remove_section( 'header_image' );
 
   Kirki::add_field( 'gannet_config', array(
     'type'        => 'custom',
@@ -563,6 +539,13 @@ function gannet_customize_register( $wp_customize ) {
       'max'   => 30,
       'step'  => 1,
     ),
+    'output' => array(
+      array(
+        'element' =>  'body',
+        'property' => 'font-size',
+        'units'    => 'px'
+      )
+    ),
     'transport' => 'postMessage',
     'js_vars'   => array(
       array(
@@ -573,11 +556,39 @@ function gannet_customize_register( $wp_customize ) {
       ),
     )
   ) );
+}
+add_action( 'init', 'gannet_kirki_init' );
+
+/**
+ * Add postMessage support for site title and description for the Theme Customizer.
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ */
+function gannet_customize_register( $wp_customize ) {
+	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
+	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
+	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+
+  // Remove Header Text color control
+  $wp_customize->remove_control( 'header_textcolor' );
+
+  // Remove Background Color Control
+  $wp_customize->remove_control( 'background_color' );
+
+  // Move Background Image control into Layout section & remove Background Image section
+  $wp_customize->get_control( 'background_image' )->section = 'layout';
+  $wp_customize->get_control( 'background_image' )->priority = 20;
+  $wp_customize->remove_section( 'background_image' );
+
+  // Move Header Image control into Layout section & remove Header Image section
+  $wp_customize->get_control( 'header_image' )->section = 'layout';
+  $wp_customize->get_control( 'header_image' )->priority = 20;
+  $wp_customize->remove_section( 'header_image' );
 
   // ddd($wp_customize);
 
 }
-add_action( 'customize_register', 'gannet_customize_register' );
+add_action( 'customize_register', 'gannet_customize_register', 100 );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
@@ -606,32 +617,10 @@ function gannet_inline_styles() {
   $heading_text_color   = get_theme_mod( 'heading_text_color', '#292929' );
   $body_text_color      = get_theme_mod( 'body_text_color', '#292929' );
 
-  $site_title_font_family       = get_theme_mod( 'site_title_font_family', 'Roboto Condensed' );
-  $site_description_font_family = get_theme_mod( 'site_description_font_family', 'Droid Serif' );
-
-  // Heading Type
-  $heading_type_font_family   = get_theme_mod( 'heading_type_font_family', 'Open Sans' );
-  $heading_type_font_weight   = get_theme_mod( 'heading_type_font_weight', 600 );
-  $heading_type_h1_font_size  = get_theme_mod( 'heading_type_h1_font_size', 40 );
-  $heading_type_h2_font_size  = get_theme_mod( 'heading_type_h2_font_size', 34 );
-  $heading_type_h3_font_size  = get_theme_mod( 'heading_type_h3_font_size', 24 );
-  $heading_type_h4_font_size  = get_theme_mod( 'heading_type_h4_font_size', 22 );
-  $heading_type_h5_font_size  = get_theme_mod( 'heading_type_h5_font_size', 20 );
-  $heading_type_h6_font_size  = get_theme_mod( 'heading_type_h6_font_size', 18 );
-
-  // Base Type
-  $base_type_font_family    = get_theme_mod( 'base_type_font_family', 'Open Sans' );
-  $base_type_font_weight    = get_theme_mod( 'base_type_font_weight', 300 );
-  $base_type_font_size      = get_theme_mod( 'base_type_font_size', 14 );
-
-
   $custom_css = "
     body {
       background-color: {$background_color};
       color: {$body_text_color};
-      font-size: {$base_type_font_size};
-      font-family: {$base_type_font_family};
-      font-weight: {$base_type_font_weight};
       border-top: 4px solid {$primary_color};
     }
     a {
@@ -639,34 +628,12 @@ function gannet_inline_styles() {
     }
     h1, h2, h3, h4, h5, h6 {
       color: {$heading_text_color};
-      font-family: {$heading_type_font_family};
-      font-weight: {$heading_type_font_weight};
-    }
-    h1 {
-      font-size: {$heading_type_h1_font_size}px;
-    }
-    h2 {
-      font-size: {$heading_type_h2_font_size}px;
-    }
-    h3 {
-      font-size: {$heading_type_h3_font_size}px;
-    }
-    h4 {
-      font-size: {$heading_type_h4_font_size}px;
-    }
-    h5 {
-      font-size: {$heading_type_h5_font_size}px;
-    }
-    h6 {
-      font-size: {$heading_type_h6_font_size}px;
     }
     .site-branding .site-title a {
       color: {$body_text_color};
-      font-family: {$site_title_font_family};
     }
     .site-branding .site-description {
       color: {$primary_color};
-      font-family: {$site_description_font_family};
     }
   ";
 
