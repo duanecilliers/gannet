@@ -51,15 +51,14 @@ function gannet_customize_register( $wp_customize ) {
     'choices'  => Kirki_Fonts::get_font_choices(),
     'output'   => array(
       array(
-        'element'  => '.site-branding .site-title',
-        'function' => 'css',
+        'element'  => '.site-branding .site-title a',
         'property' => 'font-family'
       )
     ),
     'transport' => 'postMessage',
     'js_vars'   => array(
       array(
-          'element'  => '.site-branding .site-title',
+          'element'  => '.site-branding .site-title a',
           'function' => 'css',
           'property' => 'font-family'
       ),
@@ -76,7 +75,6 @@ function gannet_customize_register( $wp_customize ) {
     'output'   => array(
       array(
         'element'  => '.site-branding .site-description',
-        'function' => 'css',
         'property' => 'font-family'
       )
     ),
@@ -301,6 +299,12 @@ function gannet_customize_register( $wp_customize ) {
     'default'  => 'Open Sans',
     'priority' => 20,
     'choices'  => Kirki_Fonts::get_font_choices(),
+    'output'   => array(
+      array(
+        'element'  => 'h1, h2, h3, h4, h5, h6',
+        'property' => 'font-family'
+      )
+    ),
     'transport' => 'postMessage',
     'js_vars'   => array(
       array(
@@ -507,6 +511,12 @@ function gannet_customize_register( $wp_customize ) {
     'priority' => 20,
     'choices'  => Kirki_Fonts::get_font_choices(),
     'transport' => 'postMessage',
+    'output'   => array(
+      array(
+        'element'  => 'body',
+        'property' => 'font-family'
+      )
+    ),
     'js_vars'   => array(
       array(
           'element'  => 'body',
@@ -650,11 +660,9 @@ function gannet_inline_styles() {
     h6 {
       font-size: {$heading_type_h6_font_size}px;
     }
-    .site-branding .site-title {
-      font-family: {$site_title_font_family};
-    }
     .site-branding .site-title a {
       color: {$body_text_color};
+      font-family: {$site_title_font_family};
     }
     .site-branding .site-description {
       color: {$primary_color};
