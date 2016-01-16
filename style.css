@@ -442,13 +442,14 @@ a {
   float: left;
   width: 100%; }
   .main-navigation .nav-menu > li > a {
-    background-color: #7cccf9;
+    margin-right: .5em;
     padding: 8px 10px;
-    color: white;
-    transition: all .1s ease-in-out;
-    margin-right: .5em; }
-    .main-navigation .nav-menu > li > a:hover {
-      background-color: #94d5fa;
+    font-weight: bold;
+    font-size: 0.925em;
+    transition: all .1s ease-in-out; }
+    .main-navigation .nav-menu > li > a:hover, .main-navigation .nav-menu > li > a:focus {
+      background-color: #7cccf9;
+      color: white;
       text-shadow: 1px 1px rgba(0, 0, 0, 0.2); }
   .main-navigation ul {
     display: none;
