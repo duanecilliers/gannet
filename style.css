@@ -283,11 +283,21 @@ big {
 /*--------------------------------------------------------------
 ## Header
 --------------------------------------------------------------*/
+#masthead {
+  padding: 20px 0; }
+
+.site-branding {
+  margin-bottom: 20px; }
+
+.site-title {
+  margin-top: 0; }
+
 @media (min-width: 928px) {
   #masthead {
     padding: 40px 0; }
   .site-branding {
     display: inline-block;
+    margin-bottom: 0;
     width: 35%; }
   #site-navigation {
     float: none;
