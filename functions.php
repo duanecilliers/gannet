@@ -132,9 +132,9 @@ add_action( 'wp_enqueue_scripts', 'gannet_scripts' );
 require get_template_directory() . '/vendor/kirki/kirki.php';
 
 /**
- * Implement the Custom Header feature.
+ * Custom utility functions
  */
-require get_template_directory() . '/inc/custom-header.php';
+require get_template_directory() . '/inc/util.php';
 
 /**
  * Custom template tags for this theme.

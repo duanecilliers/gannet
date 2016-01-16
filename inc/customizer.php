@@ -16,15 +16,7 @@ function gannet_upsell( $label ) {
   return ob_get_clean();
 }
 
-/**
- * Add postMessage support for site title and description for the Theme Customizer.
- *
- * @param WP_Customize_Manager $wp_customize Theme Customizer object.
- */
-function gannet_customize_register( $wp_customize ) {
-	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+function gannet_kirki_init() {
 
   Kirki::add_config( 'gannet_config', array(
     'capability'  => 'edit_theme_options',
@@ -37,29 +29,114 @@ function gannet_customize_register( $wp_customize ) {
    * - Header Logo
    */
 
-  Kirki::add_section( 'site_branding', array(
-    'priority'    => 70,
-    'title'       => __( 'Site Branding', 'gannet' )
+  /**
+   * Header Text or Logo
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'radio-buttonset',
+    'settings'    => 'header_brand',
+    'label'       => __( 'Show Header Text or Logo', 'gannet' ),
+    'description' => __( 'Enable search functionality', 'gannet' ),
+    'section'     => 'title_tagline',
+    'priority'    => 10,
+    'default'     => 'text',
+    'choices'     => array(
+      'text'  => __( 'Header Text', 'gannet' ),
+      'logo' => __( 'Logo', 'gannet' ),
+    ),
+  ) );
+
+  /**
+   * Site Title Color
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'color',
+    'label'       => __( 'Site Title Color', 'gannet' ),
+    'settings'    => 'site_title_color',
+    'section'     => 'title_tagline',
+    'default'     => '#292929',
+    'priority'    => 10,
+    'required'     => array(
+      array(
+        'setting'  => 'header_brand',
+        'operator' => '==',
+        'value'    => 'text'
+      )
+    ),
+    'output'   => array(
+      array(
+        'element'  => '.site-title a',
+        'property' => 'color'
+      )
+    ),
+    'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+        'element'  => '.site-title a',
+        'function' => 'css',
+        'property' => 'color'
+      )
+    )
+  ) );
+
+  /**
+   * Site Tagline Color
+   */
+  Kirki::add_field( 'gannet_config', array(
+    'type'        => 'color',
+    'label'       => __( 'Site Tagline Color', 'gannet' ),
+    'settings'    => 'site_tagline_color',
+    'section'     => 'title_tagline',
+    'default'     => '#7cccf9',
+    'priority'    => 10,
+    'required'     => array(
+      array(
+        'setting'  => 'header_brand',
+        'operator' => '==',
+        'value'    => 'text'
+      )
+    ),
+    'output'   => array(
+      array(
+        'element'  => '.site-description',
+        'property' => 'color'
+      )
+    ),
+    'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+        'element'  => '.site-description',
+        'function' => 'css',
+        'property' => 'color'
+      )
+    )
   ) );
 
   Kirki::add_field( 'gannet_config', array(
     'type'     => 'select',
     'settings' => 'site_title_font_family',
     'label'    => __( 'Site title Font Family', 'gannet' ),
-    'section'  => 'site_branding',
+    'section'  => 'title_tagline',
     'default'  => 'Roboto Condensed',
+    'priority' => 20,
     'choices'  => Kirki_Fonts::get_font_choices(),
+    'required'     => array(
+      array(
+        'setting'  => 'header_brand',
+        'operator' => '==',
+        'value'    => 'text'
+      )
+    ),
     'output'   => array(
       array(
-        'element'  => '.site-branding .site-title',
-        'function' => 'css',
+        'element'  => '.site-branding .site-title a',
         'property' => 'font-family'
       )
     ),
     'transport' => 'postMessage',
     'js_vars'   => array(
       array(
-          'element'  => '.site-branding .site-title',
+          'element'  => '.site-branding .site-title a',
           'function' => 'css',
           'property' => 'font-family'
       ),
@@ -70,13 +147,20 @@ function gannet_customize_register( $wp_customize ) {
     'type'     => 'select',
     'settings' => 'site_description_font_family',
     'label'    => __( 'Site Description Font Family', 'gannet' ),
-    'section'  => 'site_branding',
+    'section'  => 'title_tagline',
     'default'  => 'Droid Serif',
+    'priority' => 20,
     'choices'  => Kirki_Fonts::get_font_choices(),
+    'required'     => array(
+      array(
+        'setting'  => 'header_brand',
+        'operator' => '==',
+        'value'    => 'text'
+      )
+    ),
     'output'   => array(
       array(
         'element'  => '.site-branding .site-description',
-        'function' => 'css',
         'property' => 'font-family'
       )
     ),
@@ -94,16 +178,32 @@ function gannet_customize_register( $wp_customize ) {
     'settings'    => 'logo',
     'label'       => __( 'Upload Your Logo', 'gannet' ),
     'description' => __( 'We recommend a maximum logo size of 260 x 80 pixels', 'gannet' ),
-    'section'     => 'site_branding',
-    'type'        => 'upload'
+    'section'     => 'title_tagline',
+    'priority' => 20,
+    'type'        => 'upload',
+    'required'     => array(
+      array(
+        'setting'  => 'header_brand',
+        'operator' => '==',
+        'value'    => 'logo'
+      )
+    ),
   ) );
 
   Kirki::add_field( 'gannet_config', array(
     'settings'    => 'logo_retina',
     'label'       => __( 'Upload Your Retina Logo', 'gannet' ),
     'description' => __( 'The retina logo must be double the main logo resolution, so at our recommendation it would be 520 x 160 pixels', 'gannet' ),
-    'section'     => 'site_branding',
-    'type'        => 'upload'
+    'section'     => 'title_tagline',
+    'priority' => 20,
+    'type'        => 'upload',
+    'required'     => array(
+      array(
+        'setting'  => 'header_brand',
+        'operator' => '==',
+        'value'    => 'logo'
+      )
+    ),
   ) );
 
   /**
@@ -116,12 +216,6 @@ function gannet_customize_register( $wp_customize ) {
    * - Headings Text Color
    * - Body Text Color
    */
-
-  // Remove Header Text color control
-  $wp_customize->remove_control( 'header_textcolor' );
-
-  // Remove Background Color Control
-  $wp_customize->remove_control( 'background_color' );
 
   Kirki::add_field( 'gannet_config', array(
     'type'        => 'custom',
@@ -174,7 +268,7 @@ function gannet_customize_register( $wp_customize ) {
     'transport'   => 'postMessage',
     'js_vars'     => array(
       array(
-        'element'  => 'a',
+        'element'  => 'a, .site-branding .site-description',
         'function' => 'css',
         'property' => 'color'
       )
@@ -218,7 +312,7 @@ function gannet_customize_register( $wp_customize ) {
     'default'     => '#292929',
     'js_vars'     => array(
       array(
-        'element'  => 'body, .site-branding .site-title a',
+        'element'  => 'body',
         'function' => 'css',
         'property' => 'color'
       )
@@ -233,16 +327,6 @@ function gannet_customize_register( $wp_customize ) {
     'priority'    => 90,
     'title'       => __( 'Layout & Design', 'gannet' ),
   ) );
-
-  // Move Background Image control into Layout section & remove Background Image section
-  $wp_customize->get_control( 'background_image' )->section = 'layout';
-  $wp_customize->get_control( 'background_image' )->priority = 20;
-  $wp_customize->remove_section( 'background_image' );
-
-  // Move Header Image control into Layout section & remove Header Image section
-  $wp_customize->get_control( 'header_image' )->section = 'layout';
-  $wp_customize->get_control( 'header_image' )->priority = 20;
-  $wp_customize->remove_section( 'header_image' );
 
   Kirki::add_field( 'gannet_config', array(
     'type'        => 'custom',
@@ -301,6 +385,12 @@ function gannet_customize_register( $wp_customize ) {
     'default'  => 'Open Sans',
     'priority' => 20,
     'choices'  => Kirki_Fonts::get_font_choices(),
+    'output'   => array(
+      array(
+        'element'  => 'h1, h2, h3, h4, h5, h6',
+        'property' => 'font-family'
+      )
+    ),
     'transport' => 'postMessage',
     'js_vars'   => array(
       array(
@@ -507,6 +597,12 @@ function gannet_customize_register( $wp_customize ) {
     'priority' => 20,
     'choices'  => Kirki_Fonts::get_font_choices(),
     'transport' => 'postMessage',
+    'output'   => array(
+      array(
+        'element'  => 'body',
+        'property' => 'font-family'
+      )
+    ),
     'js_vars'   => array(
       array(
           'element'  => 'body',
@@ -553,6 +649,13 @@ function gannet_customize_register( $wp_customize ) {
       'max'   => 30,
       'step'  => 1,
     ),
+    'output' => array(
+      array(
+        'element' =>  'body',
+        'property' => 'font-size',
+        'units'    => 'px'
+      )
+    ),
     'transport' => 'postMessage',
     'js_vars'   => array(
       array(
@@ -563,17 +666,53 @@ function gannet_customize_register( $wp_customize ) {
       ),
     )
   ) );
+}
+add_action( 'init', 'gannet_kirki_init' );
+
+/**
+ * Add postMessage support for site title and description for the Theme Customizer.
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ */
+function gannet_customize_register( $wp_customize ) {
+	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
+	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
+	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+
+  // Remove Header Text color control
+  $wp_customize->remove_control( 'display_header_text' );
+  $wp_customize->remove_control( 'header_textcolor' );
+
+  // $wp_customize->get_control( 'display_header_text' )->priority = 10;
+
+  // $wp_customize->get_control( 'header_textcolor' )->label = __( 'Site Tagline Color', 'gannet' );
+  // $wp_customize->get_control( 'header_textcolor' )->section = 'title_tagline';
+  // $wp_customize->get_control( 'header_textcolor' )->priority = 15;
+  // $wp_customize->get_setting( 'header_textcolor' )->default = '7bcaf7';
+
+  // Remove Background Color Control
+  $wp_customize->remove_control( 'background_color' );
+
+  // Move Background Image control into Layout section & remove Background Image section
+  $wp_customize->get_control( 'background_image' )->section = 'layout';
+  $wp_customize->get_control( 'background_image' )->priority = 20;
+  $wp_customize->remove_section( 'background_image' );
+
+  // Move Header Image control into Layout section & remove Header Image section
+  $wp_customize->get_control( 'header_image' )->section = 'layout';
+  $wp_customize->get_control( 'header_image' )->priority = 20;
+  $wp_customize->remove_section( 'header_image' );
 
   // ddd($wp_customize);
 
 }
-add_action( 'customize_register', 'gannet_customize_register' );
+add_action( 'customize_register', 'gannet_customize_register', 100 );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function gannet_customize_preview_js() {
-	wp_enqueue_script( 'gannet_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
+	wp_enqueue_script( 'gannet_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20150115', true );
 }
 add_action( 'customize_preview_init', 'gannet_customize_preview_js' );
 
@@ -596,71 +735,58 @@ function gannet_inline_styles() {
   $heading_text_color   = get_theme_mod( 'heading_text_color', '#292929' );
   $body_text_color      = get_theme_mod( 'body_text_color', '#292929' );
 
-  $site_title_font_family       = get_theme_mod( 'site_title_font_family', 'Roboto Condensed' );
-  $site_description_font_family = get_theme_mod( 'site_description_font_family', 'Droid Serif' );
-
-  // Heading Type
-  $heading_type_font_family   = get_theme_mod( 'heading_type_font_family', 'Open Sans' );
-  $heading_type_font_weight   = get_theme_mod( 'heading_type_font_weight', 600 );
-  $heading_type_h1_font_size  = get_theme_mod( 'heading_type_h1_font_size', 40 );
-  $heading_type_h2_font_size  = get_theme_mod( 'heading_type_h2_font_size', 34 );
-  $heading_type_h3_font_size  = get_theme_mod( 'heading_type_h3_font_size', 24 );
-  $heading_type_h4_font_size  = get_theme_mod( 'heading_type_h4_font_size', 22 );
-  $heading_type_h5_font_size  = get_theme_mod( 'heading_type_h5_font_size', 20 );
-  $heading_type_h6_font_size  = get_theme_mod( 'heading_type_h6_font_size', 18 );
-
-  // Base Type
-  $base_type_font_family    = get_theme_mod( 'base_type_font_family', 'Open Sans' );
-  $base_type_font_weight    = get_theme_mod( 'base_type_font_weight', 300 );
-  $base_type_font_size      = get_theme_mod( 'base_type_font_size', 14 );
-
+  // Header Brand
+  $header_brand   = get_theme_mod( 'header_brand', 'text' );
 
   $custom_css = "
     body {
       background-color: {$background_color};
       color: {$body_text_color};
-      font-size: {$base_type_font_size};
-      font-family: {$base_type_font_family};
-      font-weight: {$base_type_font_weight};
       border-top: 4px solid {$primary_color};
     }
-    a {
-      color: {$primary_color};
-    }
-    h1, h2, h3, h4, h5, h6 {
-      color: {$heading_text_color};
-      font-family: {$heading_type_font_family};
-      font-weight: {$heading_type_font_weight};
-    }
-    h1 {
-      font-size: {$heading_type_h1_font_size}px;
-    }
-    h2 {
-      font-size: {$heading_type_h2_font_size}px;
-    }
-    h3 {
-      font-size: {$heading_type_h3_font_size}px;
-    }
-    h4 {
-      font-size: {$heading_type_h4_font_size}px;
-    }
-    h5 {
-      font-size: {$heading_type_h5_font_size}px;
-    }
-    h6 {
-      font-size: {$heading_type_h6_font_size}px;
-    }
-    .site-branding .site-title {
-      font-family: {$site_title_font_family};
-    }
-    .site-branding .site-title a {
-      color: {$body_text_color};
-    }
-    .site-branding .site-description {
-      color: {$primary_color};
-      font-family: {$site_description_font_family};
-    }
   ";
+
+  if ( $header_brand == 'logo' ) {
+    $logo        = get_theme_mod( 'logo' );
+    $logo_id     = gannet_get_attachment_id_from_url( $logo );
+    $logo_meta   = wp_get_attachment_metadata( $logo_id );
+
+    $custom_css .= "
+      .site-branding a {
+        /* Image replacement */
+        display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr;
+        background-image: url('{$logo}');
+        background-size: {$logo_meta['width']}px {$logo_meta['height']}px;
+        width: {$logo_meta['width']}px;
+        height: {$logo_meta['height']}px;
+      }
+      .site-description {
+        display: none;
+      }
+    ";
+
+    $logo_retina      = get_theme_mod( 'logo_retina' );
+    $logo_retina_id   = gannet_get_attachment_id_from_url( $logo_retina );
+    $logo_retina_meta = wp_get_attachment_metadata( $logo_retina_id );
+
+    if ( $logo_retina ) {
+      $custom_css .= "
+        @media
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (   min--moz-device-pixel-ratio: 2),
+        only screen and (     -o-min-device-pixel-ratio: 2/1),
+        only screen and (        min-device-pixel-ratio: 2),
+        only screen and (                min-resolution: 192dpi),
+        only screen and (                min-resolution: 2dppx) {
+
+          .site-branding a {
+            background-image: url('{$logo_retina}');
+          }
+
+        }
+      ";
+    }
+  }
 
   wp_add_inline_style( 'gannet-style', $custom_css );
 }
