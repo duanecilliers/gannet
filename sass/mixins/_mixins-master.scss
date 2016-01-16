@@ -22,3 +22,16 @@
 @mixin clearfix-after() {
 	clear: both;
 }
+
+// Buttons
+@mixin button() {
+  background-color: $color__background-button;
+  padding: 8px 10px;
+  color: white;
+  transition: all .1s ease-in-out;
+
+  &:hover {
+    background-color: lighten($color__background-button, 5%);
+    text-shadow: 1px 1px rgba(0,0,0,.2);
+  }
+}

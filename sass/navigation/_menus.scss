@@ -4,6 +4,11 @@
 	float: left;
 	width: 100%;
 
+	.nav-menu > li > a {
+		@include button();
+		margin-right: .5em;
+	}
+
 	ul {
 		display: none;
 		list-style: none;
@@ -54,6 +59,7 @@
 		float: none;
 		margin-bottom: .5em;
 		position: relative;
+		display: inline-block;
 
 		&:last-child {
 			margin-bottom: 0;

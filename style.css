@@ -436,6 +436,15 @@ a {
   display: block;
   float: left;
   width: 100%; }
+  .main-navigation .nav-menu > li > a {
+    background-color: #7cccf9;
+    padding: 8px 10px;
+    color: white;
+    transition: all .1s ease-in-out;
+    margin-right: .5em; }
+    .main-navigation .nav-menu > li > a:hover {
+      background-color: #94d5fa;
+      text-shadow: 1px 1px rgba(0, 0, 0, 0.2); }
   .main-navigation ul {
     display: none;
     list-style: none;
@@ -464,7 +473,8 @@ a {
   .main-navigation li {
     float: none;
     margin-bottom: .5em;
-    position: relative; }
+    position: relative;
+    display: inline-block; }
     .main-navigation li:last-child {
       margin-bottom: 0; }
   .main-navigation a {
