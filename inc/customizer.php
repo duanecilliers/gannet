@@ -735,6 +735,9 @@ function gannet_inline_styles() {
   $heading_text_color   = get_theme_mod( 'heading_text_color', '#292929' );
   $body_text_color      = get_theme_mod( 'body_text_color', '#292929' );
 
+  // Header Brand
+  $header_brand   = get_theme_mod( 'header_brand', 'text' );
+
   $custom_css = "
     body {
       background-color: {$background_color};
@@ -742,6 +745,48 @@ function gannet_inline_styles() {
       border-top: 4px solid {$primary_color};
     }
   ";
+
+  if ( $header_brand == 'logo' ) {
+    $logo        = get_theme_mod( 'logo' );
+    $logo_id     = gannet_get_attachment_id_from_url( $logo );
+    $logo_meta   = wp_get_attachment_metadata( $logo_id );
+
+    $custom_css .= "
+      .site-branding a {
+        /* Image replacement */
+        display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr;
+        background-image: url('{$logo}');
+        background-size: {$logo_meta['width']}px {$logo_meta['height']}px;
+        width: {$logo_meta['width']}px;
+        height: {$logo_meta['height']}px;
+      }
+      .site-description {
+        display: none;
+      }
+    ";
+
+    $logo_retina      = get_theme_mod( 'logo_retina' );
+    $logo_retina_id   = gannet_get_attachment_id_from_url( $logo_retina );
+    $logo_retina_meta = wp_get_attachment_metadata( $logo_retina_id );
+
+    if ( $logo_retina ) {
+      $custom_css .= "
+        @media
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (   min--moz-device-pixel-ratio: 2),
+        only screen and (     -o-min-device-pixel-ratio: 2/1),
+        only screen and (        min-device-pixel-ratio: 2),
+        only screen and (                min-resolution: 192dpi),
+        only screen and (                min-resolution: 2dppx) {
+
+          .site-branding a {
+            background-image: url('{$logo_retina}');
+          }
+
+        }
+      ";
+    }
+  }
 
   wp_add_inline_style( 'gannet-style', $custom_css );
 }
