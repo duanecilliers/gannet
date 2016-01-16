@@ -341,14 +341,19 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  border: none;
-  background: #7cccf9;
+  background-color: #7cccf9;
+  padding: 8px 10px;
   color: white;
-  font-weight: bold;
+  transition: all .1s ease-in-out;
+  border: none;
   font-size: 12px;
-  font-size: 0.75rem;
-  line-height: 1;
-  padding: .7em 1em; }
+  font-size: 0.75rem; }
+  button:hover,
+  input[type="button"]:hover,
+  input[type="reset"]:hover,
+  input[type="submit"]:hover {
+    background-color: #94d5fa;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2); }
 
 input[type="text"],
 input[type="email"],
