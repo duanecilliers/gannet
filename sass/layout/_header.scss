@@ -1,0 +1,15 @@
+@media (min-width: $screen__md) {
+  #masthead {
+    padding: 40px 0;
+  }
+  .site-branding {
+    display: inline-block;
+    width: 35%;
+  }
+  #site-navigation {
+    float: none;
+    display: inline-block;
+    width: 60%;
+    clear: none;
+  }
+}
