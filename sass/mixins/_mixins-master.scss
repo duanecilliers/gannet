@@ -35,3 +35,9 @@
     text-shadow: 1px 1px rgba(0,0,0,.2);
   }
 }
+
+@mixin nav-item-active() {
+  background-color: $color__background-button;
+  color: white;
+  text-shadow: 1px 1px rgba(0,0,0,.2);
+}

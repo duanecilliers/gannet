@@ -13,9 +13,7 @@
 
 		&:hover,
 		&:focus {
-			background-color: $color__background-button;
-			color: white;
-    	text-shadow: 1px 1px rgba(0,0,0,.2);
+			@include nav-item-active();
 		}
 	}
 
@@ -28,11 +26,10 @@
 		ul {
 			float: left;
 			position: absolute;
-			top: 1.5em;
+			top: 2.4em;
 			left: -999em;
 			z-index: 99999;
 			background-color: $color__background-body;
-			padding: .5em;
 			border: 1px solid $color__background-hr;
 
 			ul {
@@ -49,10 +46,13 @@
 
 			a {
 				width: 200px;
+				padding: 8px 10px;
+				transition: all .1s ease-in-out;
 			}
 
 			:hover > a,
 			.focus > a {
+				@include nav-item-active();
 			}
 
 			a:hover,
@@ -77,7 +77,7 @@
 
 		&:hover > a,
 		&.focus > a {
-
+			@include nav-item-active();
 		}
 	}
 	a {
@@ -85,6 +85,7 @@
 		color: $color__text-main;
 		display: block;
 		text-decoration: none;
+		transition: all .1s ease-in-out;
 
 		&:hover,
 		&:focus {
