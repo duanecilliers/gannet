@@ -4,7 +4,7 @@
  * Handles toggling the navigation menu for small screens and enables tab
  * support for dropdown menus.
  */
-( function() {
+( function($) {
 	var container, button, menu, links, subMenus;
 
 	container = document.getElementById( 'site-navigation' );
@@ -43,8 +43,8 @@
 	};
 
 	// Get all the link elements within the menu.
-	links    = menu.getElementsByTagName( 'a' );
-	subMenus = menu.getElementsByTagName( 'ul' );
+	links        = menu.getElementsByTagName( 'a' );
+	subMenus     = menu.getElementsByTagName( 'ul' );
 
 	// Set menu items with submenus to aria-haspopup="true".
 	for ( var i = 0, len = subMenus.length; i < len; i++ ) {
@@ -78,4 +78,24 @@
 			self = self.parentElement;
 		}
 	}
-} )();
+
+	/**
+	 * Set submenu parent anchor .focus class
+	 */
+	var $subMenus = $('.page_item_has_children ul.children');
+
+	$subMenus.on('hover, focus', '> a', function (e) {
+		console.log(e);
+		$(this).closest('.page_item_has_children').addClass('focus');
+	});
+
+	$subMenus.on('blur', '> a', function (e) {
+		console.log(e);
+		$(this).closest('.page_item_has_children').removeClass('focus');
+	});
+
+	$subMenus.mouseleave(function(e) {
+		$(this).closest('.page_item_has_children').removeClass('focus');
+	});
+
+} )(jQuery);
