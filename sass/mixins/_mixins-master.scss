@@ -41,3 +41,24 @@
   color: white;
   text-shadow: 1px 1px rgba(0,0,0,.2);
 }
+
+@mixin card() {
+  border: 1px solid $color__background-hr;
+  background-color: white;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 2px 3px rgba(0,0,0,.2);
+
+  &:after {
+    content: "";
+    height: 2px;
+    width: 99%;
+    background-color: white;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: $color__background-hr;
+    position: absolute;
+    bottom: -3px;
+    left: 0.5%;
+  }
+}
