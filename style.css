@@ -314,7 +314,7 @@ big {
 
 @media (min-width: 768px) {
   .gutter-sizer {
-    width: 1%; }
+    width: 2%; }
   .grid-sizer,
   .masonry-grid .hentry {
     width: 48%; }
@@ -323,8 +323,6 @@ big {
     overflow: hidden; } }
 
 @media (min-width: 928px) {
-  .gutter-sizer {
-    width: 2%; }
   .grid-sizer,
   .masonry-grid .hentry {
     width: 32%; } }

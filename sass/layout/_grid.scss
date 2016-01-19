@@ -10,7 +10,7 @@
 @media (min-width: $screen__sm) {
 
   .gutter-sizer {
-    width: 1%;
+    width: 2%;
   }
 
   .grid-sizer,
@@ -25,10 +25,6 @@
 }
 
 @media (min-width: $screen__md) {
-
-  .gutter-sizer {
-    width: 2%;
-  }
 
   .grid-sizer,
   .masonry-grid .hentry {
