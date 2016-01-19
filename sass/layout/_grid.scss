@@ -1,6 +1,5 @@
 #page {
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 0 1em;
 }
 
 .masonry-grid .hentry {
@@ -9,6 +8,10 @@
 }
 
 @media (min-width: $screen__sm) {
+
+  .gutter-sizer {
+    width: 1%;
+  }
 
   .grid-sizer,
   .masonry-grid .hentry {
@@ -22,8 +25,20 @@
 }
 
 @media (min-width: $screen__md) {
+
+  .gutter-sizer {
+    width: 2%;
+  }
+
   .grid-sizer,
   .masonry-grid .hentry {
-    width: 30%;
+    width: 32%;
+  }
+}
+
+@media (min-width: $screen__lg) {
+  #page {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }
