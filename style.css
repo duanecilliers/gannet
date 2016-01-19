@@ -649,7 +649,23 @@ a {
 --------------------------------------------------------------*/
 .widget {
   margin: 0 0 1.5em;
+  border: 1px solid #cecfd1;
+  background-color: white;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
   /* Make sure select elements fit in widgets. */ }
+  .widget:after {
+    content: "";
+    height: 2px;
+    width: 99%;
+    background-color: white;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: #cecfd1;
+    position: absolute;
+    bottom: -3px;
+    left: 0.5%; }
   .widget select {
     max-width: 100%; }
 
