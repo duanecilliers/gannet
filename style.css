@@ -305,6 +305,10 @@ big {
     width: 60%;
     clear: none; } }
 
+#page {
+  max-width: 1200px;
+  margin: 0 auto; }
+
 .masonry-grid .hentry {
   display: block;
   width: 100%; }
@@ -695,9 +699,6 @@ a {
 --------------------------------------------------------------*/
 * {
   box-sizing: border-box; }
-
-body {
-  padding: 0 1em; }
 
 /*--------------------------------------------------------------
 ## Branding
