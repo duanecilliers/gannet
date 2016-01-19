@@ -1,0 +1,24 @@
+.masonry-grid .hentry {
+  display: block;
+  width: 100%;
+}
+
+@media (min-width: $screen__sm) {
+
+  .grid-sizer,
+  .masonry-grid .hentry {
+    width: 48%
+  }
+
+  .masonry-grid .hentry {
+    float: left;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: $screen__md) {
+  .grid-sizer,
+  .masonry-grid .hentry {
+    width: 30%;
+  }
+}

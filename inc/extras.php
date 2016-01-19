@@ -24,6 +24,10 @@ function gannet_body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
+  if ( is_home() ) {
+    $classes[] = 'masonry-grid';
+  }
+
 	return $classes;
 }
 add_filter( 'body_class', 'gannet_body_classes' );

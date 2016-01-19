@@ -305,6 +305,23 @@ big {
     width: 60%;
     clear: none; } }
 
+.masonry-grid .hentry {
+  display: block;
+  width: 100%; }
+
+@media (min-width: 768px) {
+  .grid-sizer,
+  .masonry-grid .hentry {
+    width: 48%; }
+  .masonry-grid .hentry {
+    float: left;
+    overflow: hidden; } }
+
+@media (min-width: 928px) {
+  .grid-sizer,
+  .masonry-grid .hentry {
+    width: 30%; } }
+
 /*--------------------------------------------------------------
 # Elements
 --------------------------------------------------------------*/
@@ -631,7 +648,8 @@ a {
 .site-content:before,
 .site-content:after,
 .site-footer:before,
-.site-footer:after {
+.site-footer:after,
+.masonry-grid:after {
   content: "";
   display: table;
   table-layout: fixed; }
@@ -675,6 +693,9 @@ a {
 /*--------------------------------------------------------------
 ## Base
 --------------------------------------------------------------*/
+* {
+  box-sizing: border-box; }
+
 body {
   padding: 0 1em; }
 

@@ -127,6 +127,8 @@ function gannet_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	wp_enqueue_script( 'gannet', get_template_directory_uri() . '/js/gannet.js', array( 'jquery' ), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'gannet_scripts' );
 
