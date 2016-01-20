@@ -4,7 +4,26 @@
 
 .hentry {
 	margin: 0 0 1.5em;
-  @include card();
+
+  &.format-standard,
+  &.format-gallery,
+  &.format-aside,
+  &.format-chat,
+  &.format-link,
+  &.format-image,
+  &.format-status {
+    @include card();
+  }
+
+  &.format-quote {
+    color: white;
+    text-shadow: 1px 1px rgba(0,0,0,.2);
+
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+  }
 }
 
 .byline,

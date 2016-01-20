@@ -744,6 +744,9 @@ function gannet_inline_styles() {
       color: {$body_text_color};
       border-top: 4px solid {$primary_color};
     }
+    .format-quote {
+      background-color: {$primary_color};
+    }
   ";
 
   if ( $header_brand == 'logo' ) {
