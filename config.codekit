@@ -766,7 +766,7 @@
 		"useLibsass": 0
 		},
 	"\/sass\/style.scss": {
-		"createSourceMap": 1,
+		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 10,
 		"fileType": 4,
@@ -779,7 +779,7 @@
 		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
-		"useLibsass": 1
+		"useLibsass": 0
 		},
 	"\/sass\/typography\/_copy.scss": {
 		"createSourceMap": 0,
