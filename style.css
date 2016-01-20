@@ -1,14 +1,14 @@
 /*!
 Theme Name: Gannet
-Theme URI: http://underscores.me/
+Theme URI: http://duane.co.za/gannet/
 Author: Duane Cilliers
 Author URI: http://duane.co.za
-Description: Portfolio WordPress theme
+Description: A beautiful, minimalistic WordPress theme for portfolio sites and blogs
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: gannet
-Tags:
+Tags: minimal, portfolio, light
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -295,16 +295,17 @@ big {
 @media (min-width: 928px) {
   #masthead {
     padding: 40px 0; }
+
   .site-branding {
     display: inline-block;
     margin-bottom: 0;
     width: 35%; }
+
   #site-navigation {
     float: none;
     display: inline-block;
     width: 60%;
     clear: none; } }
-
 #page {
   padding: 0 1em; }
 
@@ -315,23 +316,22 @@ big {
 @media (min-width: 768px) {
   .gutter-sizer {
     width: 2%; }
+
   .grid-sizer,
   .masonry-grid .hentry {
     width: 48%; }
+
   .masonry-grid .hentry {
     float: left;
     overflow: hidden; } }
-
 @media (min-width: 928px) {
   .grid-sizer,
   .masonry-grid .hentry {
     width: 32%; } }
-
 @media (min-width: 1200px) {
   #page {
     max-width: 1200px;
     margin: 0 auto; } }
-
 /*--------------------------------------------------------------
 # Elements
 --------------------------------------------------------------*/
@@ -522,8 +522,7 @@ a {
       .main-navigation ul ul ul {
         left: -999em;
         top: 0; }
-      .main-navigation ul ul li:hover > ul,
-      .main-navigation ul ul li.focus > ul {
+      .main-navigation ul ul li:hover > ul, .main-navigation ul ul li.focus > ul {
         left: 100%; }
       .main-navigation ul ul a {
         width: 200px;
@@ -544,8 +543,7 @@ a {
     display: inline-block; }
     .main-navigation li:last-child {
       margin-bottom: 0; }
-    .main-navigation li:hover > a,
-    .main-navigation li.focus > a {
+    .main-navigation li:hover > a, .main-navigation li.focus > a {
       background-color: #7cccf9;
       color: white;
       text-shadow: 1px 1px rgba(0, 0, 0, 0.2); }
@@ -569,21 +567,19 @@ a {
 @media screen and (min-width: 37.5em) {
   .menu-toggle {
     display: none; }
+
   .main-navigation ul {
     display: block; } }
-
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
   margin: 0 0 1.5em;
   overflow: hidden; }
-
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
   float: left;
   width: 50%; }
-
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
@@ -718,7 +714,6 @@ a {
     text-decoration: none;
     font-weight: 400;
     letter-spacing: -1px; }
-
 .site-branding .site-description {
   margin: 0;
   font-style: italic; }
@@ -857,5 +852,3 @@ object {
 
 .gallery-caption {
   display: block; }
-
-/*# sourceMappingURL=style.css.map */
