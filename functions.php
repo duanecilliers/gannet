@@ -42,6 +42,9 @@ function gannet_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
+	add_image_size( 'post-thumb', 300, 200, true );
+	add_image_size( 'post-thumb-lg', 780, 520, true );
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'gannet' ),
