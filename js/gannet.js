@@ -1,6 +1,6 @@
 (function ($) {
 
-  var $grid = $('.masonry-grid #main');
+  var $grid = $('.masonry-grid .masonry-container');
 
   $grid.prepend('<div class="grid-sizer"></div>');
   $grid.prepend('<div class="gutter-sizer"></div>');

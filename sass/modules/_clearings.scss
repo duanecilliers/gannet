@@ -9,8 +9,7 @@
 .site-content:before,
 .site-content:after,
 .site-footer:before,
-.site-footer:after,
-.masonry-grid:after {
+.site-footer:after {
 	@include clearfix;
 }
 
