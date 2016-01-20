@@ -108,6 +108,22 @@ function gannet_categorized_blog() {
 }
 
 /**
+ *
+ */
+function gannet_responsive_thumbnail( $attachment_id ) {
+  $src    = wp_get_attachment_image_url( $attachment_id, 'medium'  );
+  $srcset = wp_get_attachment_image_srcset( $attachment_id, 'medium' );
+  $alt 		= get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+  ?>
+	<img src="<?php echo esc_url( $src ); ?>"
+		class="post-thumbnail"
+		alt="<?php echo esc_textarea( $alt ); ?>"
+		srcset="<?php echo esc_attr( $srcset ); ?>"
+		sizes="768px, (min-width: 768px) 300px">
+  <?php
+}
+
+/**
  * Flush out the transients used in gannet_categorized_blog.
  */
 function gannet_category_transient_flusher() {

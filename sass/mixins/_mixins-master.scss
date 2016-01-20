@@ -45,9 +45,12 @@
 @mixin card() {
   border: 1px solid $color__background-hr;
   background-color: white;
-  padding: 20px;
   position: relative;
   box-shadow: 0 2px 3px rgba(0,0,0,.2);
+
+  & .inner {
+    padding: 20px;
+  }
 
   &:after {
     content: "";
